@@ -1,0 +1,48 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#05030d;color:#fff;overflow-x:hidden}
+button{border:0;color:#fff;background:linear-gradient(135deg,#ff4f9d,#8f5cff);padding:14px 24px;border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 0 25px #ff4f9d55;transition:.3s}
+button:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 40px #ff4f9d99}
+.intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;padding:25px;background:radial-gradient(circle at 50% 45%,#30154f,#0b0718 50%,#030207);transition:opacity 1s,visibility 1s}
+.intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-glow{position:absolute;width:320px;height:320px;border-radius:50%;background:#ff4f9d22;filter:blur(45px);animation:pulse 3s infinite}
+.intro>*{position:relative;z-index:2}
+.eyebrow{text-transform:uppercase;letter-spacing:4px;font-size:12px;color:#d9a9ff;margin-bottom:18px}
+.intro h1{font-size:clamp(55px,10vw,110px);line-height:1;margin-bottom:20px}
+h1 span,h2 span{color:#ff80bb;text-shadow:0 0 25px #ff4f9d88}
+.intro-text{color:#c8bfd2;margin-bottom:30px}
+.site.hidden{display:none}
+.hero{min-height:100vh;position:relative;display:grid;place-items:center;text-align:center;overflow:hidden;background:radial-gradient(circle at 50% 35%,#2a1749,#0c071a 45%,#030207 80%)}
+.hero-content{position:relative;z-index:4;padding:30px;max-width:800px}
+.hero h2{font-size:clamp(45px,8vw,88px);line-height:1.05;margin-bottom:24px}
+.lead{max-width:620px;margin:0 auto 30px;color:#c9c2d2;font-size:18px;line-height:1.7}
+.moon{position:absolute;width:210px;height:210px;border-radius:50%;right:10%;top:12%;background:#fff5d6;box-shadow:0 0 35px #fff5d688,0 0 100px #fff5d633}
+.stars,.stars:before,.stars:after{position:absolute;inset:0;content:"";background-image:radial-gradient(circle,#fff 1px,transparent 1.5px);background-size:160px 160px;opacity:.35;animation:drift 25s linear infinite}
+.stars:before{background-size:230px 230px;opacity:.22;animation-duration:35s}
+.stars:after{background-size:310px 310px;opacity:.18;animation-duration:45s}
+.shooting-star{position:absolute;width:120px;height:2px;background:linear-gradient(90deg,transparent,#fff);top:22%;left:-150px;transform:rotate(-25deg);animation:shoot 7s linear infinite}
+.section{padding:110px 22px;text-align:center;max-width:1150px;margin:auto}
+.section h2,.letter h2,.surprise h2{font-size:clamp(38px,6vw,65px);margin-bottom:15px}
+.muted{color:#8f879b;margin-bottom:55px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.card{background:#ffffff09;border:1px solid #ffffff14;border-radius:24px;padding:18px;text-align:left;backdrop-filter:blur(12px);transition:.4s}
+.card:hover{transform:translateY(-10px);border-color:#ff80bb55;box-shadow:0 20px 50px #0008}
+.photo{height:260px;border-radius:18px;display:grid;place-items:center;font-size:75px;margin-bottom:22px;overflow:hidden;background-size:cover;background-position:center}
+.photo1{background:linear-gradient(135deg,#4c1d59,#17102c)}
+.photo2{background:linear-gradient(135deg,#69335e,#20112f)}
+.photo3{background:linear-gradient(135deg,#202052,#0b1733)}
+.card h3{color:#ff9ac7;font-size:22px;margin-bottom:10px}.card p{color:#aaa1b2;line-height:1.7}
+.letter-section{padding:120px 22px;background:radial-gradient(circle at center,#26133a,#05030d 65%);display:grid;place-items:center}
+.letter{max-width:720px;text-align:center;padding:50px 40px;border-radius:30px;background:#ffffff08;border:1px solid #ffffff18;box-shadow:0 25px 80px #0008;backdrop-filter:blur(18px)}
+.heart{font-size:65px;color:#ff5fa9;animation:beat 1.4s infinite;text-shadow:0 0 30px #ff4f9d}
+.letter p{color:#d1c9d7;font-size:17px;line-height:1.9;margin:17px 0}.letter strong{color:#ff9bc8}
+.surprise{min-height:85vh;display:grid;place-items:center;text-align:center;padding:80px 22px;background:#030207}
+.surprise-content{max-width:650px}.big-heart{font-size:100px;filter:drop-shadow(0 0 25px #ff4f9d);animation:beat 1.2s infinite}.surprise h2{margin:15px 0}.surprise p{color:#c8bfce;font-size:18px;line-height:1.8}.signature{margin:25px 0 30px;color:#ff9bc8!important}
+footer{text-align:center;padding:30px;color:#696272;background:#020106}
+.floating-heart{position:fixed;z-index:200;pointer-events:none;bottom:-40px;animation:floatUp 4s linear forwards}
+@keyframes beat{50%{transform:scale(1.16)}}
+@keyframes pulse{50%{transform:scale(1.2);opacity:.65}}
+@keyframes drift{to{transform:translateY(160px)}}
+@keyframes shoot{0%{left:-150px;top:20%;opacity:0}10%{opacity:1}35%{left:110%;top:55%;opacity:0}100%{left:110%;top:55%;opacity:0}}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+@media(max-width:800px){.cards{grid-template-columns:1fr}.moon{width:120px;height:120px;right:7%;top:10%}.letter{padding:38px 22px}.hero h2{font-size:48px}}
