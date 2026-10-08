@@ -401,65 +401,100 @@ function showMember(member) {
    SECRET WORD
 ========================= */
 
-function unlockSecret() {
+function unlockSecret(){
 
     const input =
-        document.getElementById("secretInput").value;
+        document.getElementById("secretInput")
+        .value.trim();
 
     const output =
         document.getElementById("secretMessage");
 
-    if (input.toLowerCase() === SECRET_WORD.toLowerCase()) {
+    if(input.toLowerCase() === SECRET_WORD.toLowerCase()){
+
+        output.innerHTML = `
+            <div class="secret-reveal">
+                <h2>💜 You Found It! 💜</h2>
+
+                <p>
+                    You discovered the hidden message...
+                    but there's one more little question. ✨
+                </p>
+
+                <h2 style="margin-top:25px;">
+                    Do you like me? 💜
+                </h2>
+
+                <div class="answer-buttons">
+
+                    <button
+                        class="yes-button"
+                        onclick="chooseYes()">
+                        YES 💜
+                    </button>
+
+                    <button
+                        class="no-button"
+                        onclick="chooseNo()">
+                        NO 🌙
+                    </button>
+
+                </div>
+
+                <div id="answerMessage"></div>
+            </div>
+        `;
+
+        heartRain(25);
+
+    }else{
 
         output.innerHTML =
-            SECRET_MESSAGE;
-
-        createHearts(30);
-
-    } else {
-
-        output.innerHTML =
-            "Hmm... that's not the secret word 💜";
+            "Not quite... try again 💜";
 
     }
 }
+function chooseYes(){
 
+    const message =
+        document.getElementById("answerMessage");
 
-/* =========================
-   HEART SHOWER
-========================= */
+    message.innerHTML = `
+        <div class="final-message">
+            💜✨ YAY! ✨💜
 
-function createHearts(amount) {
+            <br><br>
 
-    for (let i = 0; i < amount; i++) {
+            Thank you for being honest. 💜
 
-        setTimeout(() => {
+            <br><br>
 
-            const heart =
-                document.createElement("div");
+            This little purple universe
+            was made just for this moment. 🌌
+        </div>
+    `;
 
-            heart.className = "falling-heart";
-
-            heart.innerHTML =
-                ["💜","💗","✨","💖"][Math.floor(Math.random()*4)];
-
-            heart.style.left =
-                Math.random() * 100 + "vw";
-
-            heart.style.animationDuration =
-                (2 + Math.random() * 4) + "s";
-
-            document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 6000);
-
-        }, i * 100);
-    }
+    heartRain(60);
 }
 
-</script>
 
-</body>
-</html>
+function chooseNo(){
+
+    const message =
+        document.getElementById("answerMessage");
+
+    message.innerHTML = `
+        <div class="final-message">
+            🌙 That's completely okay.
+
+            <br><br>
+
+            Thank you for being honest. 💜
+
+            <br><br>
+
+            You can still explore the purple universe! ✨
+        </div>
+    `;
+
+}
