@@ -3,84 +3,463 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
-<link rel="stylesheet" href="style.css">
+<title>Someone Special 💜</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    background:
+        radial-gradient(circle at 50% 20%, #5d168f, #17002d 45%, #05000b);
+    overflow-x: hidden;
+}
+
+/* Opening screen */
+#opening {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#opening h1 {
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+.heart {
+    width: 130px;
+    height: 130px;
+    background: #a855f7;
+    position: relative;
+    transform: rotate(-45deg);
+    cursor: pointer;
+    box-shadow:
+        0 0 25px #a855f7,
+        0 0 60px #7e22ce,
+        0 0 100px #9333ea;
+    animation: pulse 1.5s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    width: 130px;
+    height: 130px;
+    background: #a855f7;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    top: -65px;
+    left: 0;
+}
+
+.heart::after {
+    left: 65px;
+    top: 0;
+}
+
+.heart span {
+    position: absolute;
+    transform: rotate(45deg);
+    z-index: 5;
+    width: 180px;
+    left: -25px;
+    top: 50px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    50% {
+        transform: rotate(-45deg) scale(1.12);
+    }
+}
+
+/* Main content */
+#main {
+    display: none;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+h1 {
+    color: #e9b8ff;
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #d8b4fe;
+    margin-bottom: 35px;
+}
+
+/* BTS cards */
+.members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.member {
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid #a855f7;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.member:hover {
+    transform: translateY(-8px);
+    background: rgba(168, 85, 247, 0.35);
+    box-shadow: 0 0 25px #9333ea;
+}
+
+.member .emoji {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.member h3 {
+    color: #f3d8ff;
+}
+
+/* Message */
+#memberMessage {
+    min-height: 70px;
+    margin: 25px auto;
+    padding: 20px;
+    max-width: 600px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    color: #f5d0fe;
+}
+
+/* Secret box */
+.secret {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid #9333ea;
+}
+
+.secret input {
+    padding: 13px;
+    width: min(300px, 80%);
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    margin: 15px 5px;
+    text-align: center;
+}
+
+.secret button {
+    padding: 13px 22px;
+    border: none;
+    border-radius: 25px;
+    background: #9333ea;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.secret button:hover {
+    background: #a855f7;
+}
+
+#secretMessage {
+    margin-top: 20px;
+    color: #e9b8ff;
+    font-size: 20px;
+}
+
+/* Falling hearts */
+.falling-heart {
+    position: fixed;
+    top: -30px;
+    font-size: 25px;
+    animation: fall linear forwards;
+    pointer-events: none;
+    z-index: 20;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.footer {
+    margin-top: 45px;
+    color: #b88dcc;
+    font-size: 14px;
+}
+</style>
 </head>
+
 <body>
 
-<div id="intro" class="intro">
-  <div class="intro-glow"></div>
-  <p class="eyebrow">A little world made for you</p>
-  <h1>For <span>You</span> ❤️</h1>
-  <p class="intro-text">There is something I want you to see...</p>
-  <button id="enterBtn">Enter My World ✨</button>
+<!-- Opening -->
+<section id="opening">
+
+    <h1>For Someone Special 💜</h1>
+
+    <div class="heart" onclick="openWorld()">
+        <span>Click Me 💜</span>
+    </div>
+
+    <p style="margin-top:70px;color:#d8b4fe;">
+        A little purple world is waiting...
+    </p>
+
+</section>
+
+
+<!-- Main Website -->
+<section id="main">
+
+<div class="container">
+
+    <h1>Welcome to Your Purple World 💜</h1>
+
+    <p class="subtitle">
+        A tiny anime-inspired space made with purple magic ✨
+    </p>
+
+    <h2>💜 BTS Universe 💜</h2>
+
+    <div class="members">
+
+        <div class="member" onclick="showMember('RM')">
+            <div class="emoji">🐨</div>
+            <h3>RM</h3>
+            <p>Kim Namjoon</p>
+        </div>
+
+        <div class="member" onclick="showMember('Jin')">
+            <div class="emoji">🐹</div>
+            <h3>Jin</h3>
+            <p>Kim Seokjin</p>
+        </div>
+
+        <div class="member" onclick="showMember('SUGA')">
+            <div class="emoji">🐱</div>
+            <h3>SUGA</h3>
+            <p>Min Yoongi</p>
+        </div>
+
+        <div class="member" onclick="showMember('j-hope')">
+            <div class="emoji">🐿️</div>
+            <h3>j-hope</h3>
+            <p>Jung Hoseok</p>
+        </div>
+
+        <div class="member" onclick="showMember('Jimin')">
+            <div class="emoji">🐥</div>
+            <h3>Jimin</h3>
+            <p>Park Jimin</p>
+        </div>
+
+        <div class="member" onclick="showMember('V')">
+            <div class="emoji">🐯</div>
+            <h3>V</h3>
+            <p>Kim Taehyung</p>
+        </div>
+
+        <div class="member" onclick="showMember('Jung Kook')">
+            <div class="emoji">🐰</div>
+            <h3>Jung Kook</h3>
+            <p>Jeon Jungkook</p>
+        </div>
+
+    </div>
+
+    <div id="memberMessage">
+        Click a BTS member 💜
+    </div>
+
+
+    <!-- Secret -->
+    <div class="secret">
+
+        <h2>🔐 Secret Purple Door</h2>
+
+        <p style="margin-top:10px;">
+            There is a hidden message here...
+        </p>
+
+        <input
+            type="password"
+            id="secretInput"
+            placeholder="Enter secret word"
+        >
+
+        <button onclick="unlockSecret()">
+            Unlock 💜
+        </button>
+
+        <div id="secretMessage"></div>
+
+    </div>
+
+    <div class="footer">
+        Made with 💜 and a little bit of magic ✨
+    </div>
+
 </div>
 
-<div id="site" class="site hidden">
-  <div class="stars"></div>
-  <div class="shooting-star"></div>
+</section>
 
-  <header class="hero">
-    <div class="moon"></div>
-    <div class="hero-content">
-      <p class="eyebrow">In a universe full of people...</p>
-      <h2>I'm glad I found <span>you.</span></h2>
-      <p class="lead">This little corner of the internet is just for one special person.</p>
-      <button onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">Our Story ↓</button>
-    </div>
-  </header>
 
-  <section id="memories" class="section">
-    <p class="eyebrow">Chapter 01</p>
-    <h2>Little Moments ✨</h2>
-    <p class="muted">Replace these cards with your real photos and memories.</p>
+<script>
 
-    <div class="cards">
-      <article class="card">
-        <div class="photo photo1">📸</div>
-        <h3>The First Memory</h3>
-        <p>Write the moment you first met or the first memory that became special.</p>
-      </article>
-      <article class="card">
-        <div class="photo photo2">🌸</div>
-        <h3>A Day I'll Remember</h3>
-        <p>Add a story about a day that made you smile for no particular reason.</p>
-      </article>
-      <article class="card">
-        <div class="photo photo3">🌙</div>
-        <h3>Still My Favorite</h3>
-        <p>Put your favorite inside joke, conversation, or little moment here.</p>
-      </article>
-    </div>
-  </section>
+/* =========================
+   EASY CUSTOMIZATION
+========================= */
 
-  <section class="letter-section">
-    <div class="letter">
-      <div class="heart">♥</div>
-      <p class="eyebrow">Chapter 02</p>
-      <h2>A Letter For You</h2>
-      <p>I could have just sent you a message, but you deserve something a little more special.</p>
-      <p>Some people enter our lives quietly and somehow become part of the moments we remember most.</p>
-      <p>So this is my tiny way of saying: <strong>I'm really happy you're here.</strong></p>
-      <p>Whatever happens next, I hope you always remember how much your presence can brighten an ordinary day.</p>
-      <button onclick="openSurprise()">There's one more thing 🎁</button>
-    </div>
-  </section>
+const SECRET_WORD = "purple";
 
-  <section id="surprise" class="surprise">
-    <div class="surprise-content">
-      <div class="big-heart">❤️</div>
-      <p class="eyebrow">Final Chapter</p>
-      <h2>You are <span>special.</span></h2>
-      <p>Not because you're perfect. Just because you're you.</p>
-      <p class="signature">— From someone who is very glad to know you ❤️</p>
-      <button onclick="makeItRain()">Make It Rain Hearts 💕</button>
-    </div>
-  </section>
+const SECRET_MESSAGE =
+    "You found the secret! 💜 You are more special than you know. ✨";
 
-  <footer>Made with ❤️ and a little bit of magic.</footer>
-</div>
 
-<script src="script.js"></script>
+/* =========================
+   OPEN WEBSITE
+========================= */
+
+function openWorld() {
+
+    document.getElementById("opening").style.display = "none";
+
+    document.getElementById("main").style.display = "block";
+
+    createHearts(20);
+}
+
+
+/* =========================
+   BTS MEMBER MESSAGES
+========================= */
+
+const messages = {
+
+    "RM":
+    "Keep shining in your own way. 💜",
+
+    "Jin":
+    "Don't forget to smile today. ✨",
+
+    "SUGA":
+    "Protect your peace and keep being yourself. 🌙",
+
+    "j-hope":
+    "Keep your sunshine alive. ☀️",
+
+    "Jimin":
+    "You deserve beautiful moments. 💜",
+
+    "V":
+    "Stay wonderfully unique. 🌌",
+
+    "Jung Kook":
+    "Keep chasing the things that make you happy. ✨"
+
+};
+
+
+function showMember(member) {
+
+    document.getElementById("memberMessage").innerHTML =
+        "<strong>" + member + "</strong><br><br>" +
+        messages[member];
+
+    createHearts(5);
+}
+
+
+/* =========================
+   SECRET WORD
+========================= */
+
+function unlockSecret() {
+
+    const input =
+        document.getElementById("secretInput").value;
+
+    const output =
+        document.getElementById("secretMessage");
+
+    if (input.toLowerCase() === SECRET_WORD.toLowerCase()) {
+
+        output.innerHTML =
+            SECRET_MESSAGE;
+
+        createHearts(30);
+
+    } else {
+
+        output.innerHTML =
+            "Hmm... that's not the secret word 💜";
+
+    }
+}
+
+
+/* =========================
+   HEART SHOWER
+========================= */
+
+function createHearts(amount) {
+
+    for (let i = 0; i < amount; i++) {
+
+        setTimeout(() => {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className = "falling-heart";
+
+            heart.innerHTML =
+                ["💜","💗","✨","💖"][Math.floor(Math.random()*4)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (2 + Math.random() * 4) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+
+        }, i * 100);
+    }
+}
+
+</script>
+
 </body>
 </html>
