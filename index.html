@@ -3,316 +3,554 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Someone Special 💜</title>
+<title>Purple Universe 💜</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    color: white;
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:Arial,sans-serif;
+    color:white;
     background:
-        radial-gradient(circle at 50% 20%, #5d168f, #17002d 45%, #05000b);
-    overflow-x: hidden;
+        radial-gradient(circle at 50% 20%,#7e22ce55,transparent 30%),
+        radial-gradient(circle at 20% 80%,#a855f733,transparent 25%),
+        linear-gradient(180deg,#03000b,#10001f,#05000d);
 }
 
-/* Opening screen */
-#opening {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+/* STARS */
+
+#stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
 }
 
-#opening h1 {
-    font-size: 32px;
-    margin-bottom: 35px;
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    opacity:.7;
+    animation:twinkle 2s infinite alternate;
 }
 
-.heart {
-    width: 130px;
-    height: 130px;
-    background: #a855f7;
-    position: relative;
-    transform: rotate(-45deg);
-    cursor: pointer;
+@keyframes twinkle{
+    from{
+        opacity:.2;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+/* OPENING */
+
+#opening{
+    position:relative;
+    z-index:5;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.title{
+    font-size:clamp(30px,7vw,60px);
+    color:#f1d5ff;
+    text-shadow:
+        0 0 10px #c084fc,
+        0 0 30px #9333ea;
+    margin-bottom:20px;
+    animation:titleFloat 3s infinite ease-in-out;
+}
+
+@keyframes titleFloat{
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+.subtitle{
+    color:#d8b4fe;
+    font-size:18px;
+    margin-bottom:70px;
+}
+
+/* HEART */
+
+.heart-container{
+    position:relative;
+    width:180px;
+    height:180px;
+    cursor:pointer;
+    animation:heartFloat 2s infinite ease-in-out;
+}
+
+@keyframes heartFloat{
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+.heart{
+    position:absolute;
+    width:120px;
+    height:120px;
+    left:30px;
+    top:30px;
+    background:#a855f7;
+    transform:rotate(-45deg);
     box-shadow:
-        0 0 25px #a855f7,
-        0 0 60px #7e22ce,
-        0 0 100px #9333ea;
-    animation: pulse 1.5s infinite;
+        0 0 20px #c084fc,
+        0 0 50px #9333ea,
+        0 0 100px #7e22ce;
+    animation:heartPulse 1.4s infinite;
 }
 
-.heart::before,
-.heart::after {
-    content: "";
-    width: 130px;
-    height: 130px;
-    background: #a855f7;
-    border-radius: 50%;
-    position: absolute;
+.heart:before,
+.heart:after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:#a855f7;
+    border-radius:50%;
 }
 
-.heart::before {
-    top: -65px;
-    left: 0;
+.heart:before{
+    top:-60px;
+    left:0;
 }
 
-.heart::after {
-    left: 65px;
-    top: 0;
+.heart:after{
+    left:60px;
+    top:0;
 }
 
-.heart span {
-    position: absolute;
-    transform: rotate(45deg);
-    z-index: 5;
-    width: 180px;
-    left: -25px;
-    top: 50px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-@keyframes pulse {
-    50% {
-        transform: rotate(-45deg) scale(1.12);
+@keyframes heartPulse{
+    50%{
+        transform:rotate(-45deg) scale(1.12);
     }
 }
 
-/* Main content */
-#main {
-    display: none;
-    padding: 40px 20px;
-    text-align: center;
+.heart-text{
+    position:absolute;
+    z-index:10;
+    width:180px;
+    top:82px;
+    left:0;
+    font-weight:bold;
+    color:white;
+    text-shadow:0 0 10px white;
 }
 
-.container {
-    max-width: 900px;
-    margin: auto;
+/* MAIN */
+
+#main{
+    display:none;
+    position:relative;
+    z-index:5;
+    min-height:100vh;
+    padding:70px 20px;
 }
 
-h1 {
-    color: #e9b8ff;
-    font-size: 38px;
-    margin-bottom: 10px;
+.container{
+    width:min(1000px,100%);
+    margin:auto;
+    text-align:center;
 }
 
-.subtitle {
-    color: #d8b4fe;
-    margin-bottom: 35px;
+.section-title{
+    font-size:38px;
+    color:#e9d5ff;
+    text-shadow:0 0 20px #9333ea;
+    margin-bottom:12px;
 }
 
-/* BTS cards */
-.members {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin: 30px 0;
+.description{
+    color:#c4b5fd;
+    margin-bottom:45px;
 }
 
-.member {
-    padding: 20px;
-    border-radius: 20px;
-    background: rgba(168, 85, 247, 0.15);
-    border: 1px solid #a855f7;
-    cursor: pointer;
-    transition: 0.3s;
+/* INTRO */
+
+.intro-card{
+    max-width:750px;
+    margin:0 auto 70px;
+    padding:35px;
+    border-radius:30px;
+    background:#ffffff0b;
+    border:1px solid #a855f755;
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 40px #7e22ce22;
 }
 
-.member:hover {
-    transform: translateY(-8px);
-    background: rgba(168, 85, 247, 0.35);
-    box-shadow: 0 0 25px #9333ea;
+.intro-card h2{
+    color:#e9b8ff;
+    margin-bottom:15px;
 }
 
-.member .emoji {
-    font-size: 35px;
-    margin-bottom: 10px;
+.intro-card p{
+    color:#ddd6fe;
+    line-height:1.8;
 }
 
-.member h3 {
-    color: #f3d8ff;
+/* BTS */
+
+.bts-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:18px;
+    margin-bottom:35px;
 }
 
-/* Message */
-#memberMessage {
-    min-height: 70px;
-    margin: 25px auto;
-    padding: 20px;
-    max-width: 600px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.08);
-    color: #f5d0fe;
+.member{
+    padding:25px 15px;
+    border-radius:25px;
+    cursor:pointer;
+    background:linear-gradient(145deg,#ffffff0e,#7e22ce22);
+    border:1px solid #a855f766;
+    transition:.4s;
+    backdrop-filter:blur(10px);
 }
 
-/* Secret box */
-.secret {
-    margin-top: 40px;
-    padding: 30px;
-    border-radius: 25px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid #9333ea;
+.member:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 0 30px #9333ea88;
 }
 
-.secret input {
-    padding: 13px;
-    width: min(300px, 80%);
-    border: none;
-    outline: none;
-    border-radius: 25px;
-    margin: 15px 5px;
-    text-align: center;
+.member-icon{
+    font-size:42px;
+    margin-bottom:10px;
 }
 
-.secret button {
-    padding: 13px 22px;
-    border: none;
-    border-radius: 25px;
-    background: #9333ea;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
+.member h3{
+    color:#f3d8ff;
+    margin-bottom:5px;
 }
 
-.secret button:hover {
-    background: #a855f7;
+.member p{
+    font-size:13px;
+    color:#c4b5fd;
 }
 
-#secretMessage {
-    margin-top: 20px;
-    color: #e9b8ff;
-    font-size: 20px;
+/* MEMBER MESSAGE */
+
+#memberMessage{
+    min-height:100px;
+    padding:25px;
+    margin:30px auto 70px;
+    max-width:700px;
+    border-radius:25px;
+    background:#ffffff08;
+    border:1px solid #9333ea55;
+    color:#e9d5ff;
+    line-height:1.7;
 }
 
-/* Falling hearts */
-.falling-heart {
-    position: fixed;
-    top: -30px;
-    font-size: 25px;
-    animation: fall linear forwards;
-    pointer-events: none;
-    z-index: 20;
+/* SECRET */
+
+.secret-box{
+    max-width:650px;
+    margin:auto;
+    padding:40px 25px;
+    border-radius:30px;
+    background:linear-gradient(145deg,#7e22ce18,#ffffff08);
+    border:1px solid #a855f766;
+    box-shadow:0 0 50px #7e22ce22;
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
+.secret-box h2{
+    color:#e9b8ff;
+    margin-bottom:10px;
+}
+
+.secret-box p{
+    color:#c4b5fd;
+    margin-bottom:20px;
+}
+
+input{
+    width:min(320px,90%);
+    padding:15px 20px;
+    border:none;
+    outline:none;
+    border-radius:30px;
+    background:#ffffff12;
+    color:white;
+    border:1px solid #a855f755;
+    text-align:center;
+}
+
+button{
+    margin:10px;
+    padding:14px 25px;
+    border:none;
+    border-radius:30px;
+    background:#9333ea;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 0 20px #9333ea55;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#a855f7;
+}
+
+.answer-buttons{
+    margin-top:20px;
+}
+
+.yes-button{
+    background:#a855f7;
+    font-size:18px;
+}
+
+.no-button{
+    background:#312e81;
+    font-size:18px;
+}
+
+#secretMessage{
+    margin-top:25px;
+    color:#f0abfc;
+    font-size:20px;
+    line-height:1.6;
+}
+
+.secret-reveal{
+    animation:reveal .8s ease;
+}
+
+@keyframes reveal{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
     }
 }
 
-.footer {
-    margin-top: 45px;
-    color: #b88dcc;
-    font-size: 14px;
+.final-message{
+    margin-top:25px;
+    padding:20px;
+    border-radius:20px;
+    background:#ffffff0d;
+    color:#f0abfc;
+    line-height:1.7;
+    animation:reveal .7s ease;
+}
+
+/* HEART RAIN */
+
+.floating-heart{
+    position:fixed;
+    top:-50px;
+    z-index:100;
+    pointer-events:none;
+    font-size:25px;
+    animation:heartFall linear forwards;
+}
+
+@keyframes heartFall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+footer{
+    margin-top:70px;
+    color:#8b5cf6;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    #main{
+        padding:50px 15px;
+    }
+
+    .section-title{
+        font-size:30px;
+    }
+
+    .intro-card{
+        padding:25px 18px;
+    }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- Opening -->
+<div id="stars"></div>
+
+<!-- OPENING -->
+
 <section id="opening">
 
-    <h1>For Someone Special 💜</h1>
-
-    <div class="heart" onclick="openWorld()">
-        <span>Click Me 💜</span>
+    <div class="title">
+        A Little Purple Universe 💜
     </div>
 
-    <p style="margin-top:70px;color:#d8b4fe;">
-        A little purple world is waiting...
-    </p>
+    <div class="subtitle">
+        Something special is waiting for you...
+    </div>
+
+    <div class="heart-container" onclick="enterUniverse()">
+
+        <div class="heart"></div>
+
+        <div class="heart-text">
+            ENTER 💜
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- Main Website -->
+<!-- MAIN -->
+
 <section id="main">
 
 <div class="container">
 
-    <h1>Welcome to Your Purple World 💜</h1>
+    <h1 class="section-title">
+        Welcome to the Purple Universe 💜
+    </h1>
 
-    <p class="subtitle">
-        A tiny anime-inspired space made with purple magic ✨
+    <p class="description">
+        A tiny galaxy filled with stars, music and memories ✨
     </p>
 
-    <h2>💜 BTS Universe 💜</h2>
 
-    <div class="members">
+    <!-- MESSAGE -->
+
+    <div class="intro-card">
+
+        <h2>🌙 A Little Message</h2>
+
+        <p>
+            Sometimes you don't need a huge story.
+            Sometimes a small little world made
+            just for someone can say enough. 💜
+        </p>
+
+        <br>
+
+        <p>
+            Explore this little purple universe
+            and see if you can discover its secret. ✨
+        </p>
+
+    </div>
+
+
+    <!-- BTS -->
+
+    <h2 class="section-title">
+        💜 BTS Universe 💜
+    </h2>
+
+    <p class="description">
+        Choose a member
+    </p>
+
+    <div class="bts-grid">
 
         <div class="member" onclick="showMember('RM')">
-            <div class="emoji">🐨</div>
+            <div class="member-icon">🐨</div>
             <h3>RM</h3>
             <p>Kim Namjoon</p>
         </div>
 
         <div class="member" onclick="showMember('Jin')">
-            <div class="emoji">🐹</div>
+            <div class="member-icon">🐹</div>
             <h3>Jin</h3>
             <p>Kim Seokjin</p>
         </div>
 
         <div class="member" onclick="showMember('SUGA')">
-            <div class="emoji">🐱</div>
+            <div class="member-icon">🐱</div>
             <h3>SUGA</h3>
             <p>Min Yoongi</p>
         </div>
 
         <div class="member" onclick="showMember('j-hope')">
-            <div class="emoji">🐿️</div>
+            <div class="member-icon">🐿️</div>
             <h3>j-hope</h3>
             <p>Jung Hoseok</p>
         </div>
 
         <div class="member" onclick="showMember('Jimin')">
-            <div class="emoji">🐥</div>
+            <div class="member-icon">🐥</div>
             <h3>Jimin</h3>
             <p>Park Jimin</p>
         </div>
 
         <div class="member" onclick="showMember('V')">
-            <div class="emoji">🐯</div>
+            <div class="member-icon">🐯</div>
             <h3>V</h3>
             <p>Kim Taehyung</p>
         </div>
 
         <div class="member" onclick="showMember('Jung Kook')">
-            <div class="emoji">🐰</div>
+            <div class="member-icon">🐰</div>
             <h3>Jung Kook</h3>
             <p>Jeon Jungkook</p>
         </div>
 
     </div>
 
+
     <div id="memberMessage">
-        Click a BTS member 💜
+        Click a BTS member to reveal a message 💜
     </div>
 
 
-    <!-- Secret -->
-    <div class="secret">
+    <!-- SECRET -->
 
-        <h2>🔐 Secret Purple Door</h2>
+    <div class="secret-box">
 
-        <p style="margin-top:10px;">
-            There is a hidden message here...
+        <h2>🔐 The Hidden Purple Door</h2>
+
+        <p>
+            There is a secret waiting behind this door...
         </p>
 
         <input
-            type="password"
             id="secretInput"
+            type="password"
             placeholder="Enter secret word"
         >
+
+        <br>
 
         <button onclick="unlockSecret()">
             Unlock 💜
@@ -322,9 +560,10 @@ h1 {
 
     </div>
 
-    <div class="footer">
-        Made with 💜 and a little bit of magic ✨
-    </div>
+
+    <footer>
+        Made with 💜 under the purple stars ✨
+    </footer>
 
 </div>
 
@@ -334,52 +573,76 @@ h1 {
 <script>
 
 /* =========================
-   EASY CUSTOMIZATION
+   SETTINGS
 ========================= */
 
 const SECRET_WORD = "purple";
 
-const SECRET_MESSAGE =
-    "You found the secret! 💜 You are more special than you know. ✨";
+
+/* =========================
+   STARS
+========================= */
+
+const stars = document.getElementById("stars");
+
+for(let i = 0; i < 150; i++){
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+}
 
 
 /* =========================
-   OPEN WEBSITE
+   ENTER UNIVERSE
 ========================= */
 
-function openWorld() {
+function enterUniverse(){
 
     document.getElementById("opening").style.display = "none";
 
     document.getElementById("main").style.display = "block";
 
-    createHearts(20);
+    heartRain(20);
+
+    window.scrollTo(0,0);
 }
 
 
 /* =========================
-   BTS MEMBER MESSAGES
+   BTS MESSAGES
 ========================= */
 
 const messages = {
 
     "RM":
-    "Keep shining in your own way. 💜",
+    "Keep learning, keep growing and keep shining in your own way. 💜",
 
     "Jin":
-    "Don't forget to smile today. ✨",
+    "Don't forget to smile. Sometimes a little smile makes a big difference. ✨",
 
     "SUGA":
-    "Protect your peace and keep being yourself. 🌙",
+    "Protect your peace and always stay true to yourself. 🌙",
 
     "j-hope":
-    "Keep your sunshine alive. ☀️",
+    "Keep your sunshine alive and spread a little happiness. ☀️",
 
     "Jimin":
-    "You deserve beautiful moments. 💜",
+    "Beautiful moments can appear when you least expect them. 💜",
 
     "V":
-    "Stay wonderfully unique. 🌌",
+    "Stay wonderfully unique. Your individuality makes you special. 🌌",
 
     "Jung Kook":
     "Keep chasing the things that make you happy. ✨"
@@ -387,13 +650,18 @@ const messages = {
 };
 
 
-function showMember(member) {
+function showMember(member){
 
-    document.getElementById("memberMessage").innerHTML =
-        "<strong>" + member + "</strong><br><br>" +
+    const box =
+        document.getElementById("memberMessage");
+
+    box.innerHTML =
+        "<strong>" +
+        member +
+        "</strong><br><br>" +
         messages[member];
 
-    createHearts(5);
+    heartRain(8);
 }
 
 
@@ -404,21 +672,27 @@ function showMember(member) {
 function unlockSecret(){
 
     const input =
-        document.getElementById("secretInput")
-        .value.trim();
+        document
+        .getElementById("secretInput")
+        .value
+        .trim();
 
     const output =
-        document.getElementById("secretMessage");
+        document
+        .getElementById("secretMessage");
+
 
     if(input.toLowerCase() === SECRET_WORD.toLowerCase()){
 
         output.innerHTML = `
+
             <div class="secret-reveal">
+
                 <h2>💜 You Found It! 💜</h2>
 
                 <p>
                     You discovered the hidden message...
-                    but there's one more little question. ✨
+                    but there is one more question. ✨
                 </p>
 
                 <h2 style="margin-top:25px;">
@@ -430,18 +704,23 @@ function unlockSecret(){
                     <button
                         class="yes-button"
                         onclick="chooseYes()">
+
                         YES 💜
+
                     </button>
 
                     <button
                         class="no-button"
                         onclick="chooseNo()">
+
                         NO 🌙
+
                     </button>
 
                 </div>
 
                 <div id="answerMessage"></div>
+
             </div>
         `;
 
@@ -454,13 +733,21 @@ function unlockSecret(){
 
     }
 }
+
+
+/* =========================
+   YES
+========================= */
+
 function chooseYes(){
 
     const message =
         document.getElementById("answerMessage");
 
     message.innerHTML = `
+
         <div class="final-message">
+
             💜✨ YAY! ✨💜
 
             <br><br>
@@ -470,7 +757,8 @@ function chooseYes(){
             <br><br>
 
             This little purple universe
-            was made just for this moment. 🌌
+            was made for this moment. 🌌
+
         </div>
     `;
 
@@ -478,23 +766,89 @@ function chooseYes(){
 }
 
 
+/* =========================
+   NO
+========================= */
+
 function chooseNo(){
 
     const message =
         document.getElementById("answerMessage");
 
     message.innerHTML = `
+
         <div class="final-message">
-            🌙 That's completely okay.
+
+            🌙 That's completely okay. 💜
 
             <br><br>
 
-            Thank you for being honest. 💜
+            Thank you for being honest.
 
             <br><br>
 
-            You can still explore the purple universe! ✨
+            You can still explore
+            the purple universe! ✨
+
         </div>
     `;
-
 }
+
+
+/* =========================
+   HEART RAIN
+========================= */
+
+function heartRain(amount){
+
+    for(let i = 0; i < amount; i++){
+
+        setTimeout(function(){
+
+            const heart =
+                document.createElement("div");
+
+            heart.className =
+                "floating-heart";
+
+            const symbols = [
+                "💜",
+                "💖",
+                "💗",
+                "✨",
+                "🌙"
+            ];
+
+            heart.innerHTML =
+                symbols[
+                    Math.floor(
+                        Math.random() *
+                        symbols.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (18 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 4) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function(){
+
+                heart.remove();
+
+            },7000);
+
+        },i * 80);
+    }
+}
+
+</script>
+
+</body>
+</html>
