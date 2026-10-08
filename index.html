@@ -323,6 +323,7 @@ button:hover{
 .yes-button{
     background:#a855f7;
     font-size:18px;
+    transition:transform .35s ease, box-shadow .35s ease;
 }
 
 .no-button{
@@ -562,7 +563,7 @@ footer{
 
 
     <footer>
-        Made with 💜 under the purple stars for you ✨
+        Made with 💜 under the purple stars ✨
     </footer>
 
 </div>
@@ -577,6 +578,9 @@ footer{
 ========================= */
 
 const SECRET_WORD = "purple";
+
+let noClicks = 0;
+let yesScale = 1;
 
 
 /* =========================
@@ -673,16 +677,19 @@ function unlockSecret(){
 
     const input =
         document
-        .getElementById("you are the best partner in my life")
+        .getElementById("secretInput")
         .value
         .trim();
 
     const output =
         document
-        .getElementById("you are the best partner in my life");
+        .getElementById("secretMessage");
 
 
     if(input.toLowerCase() === SECRET_WORD.toLowerCase()){
+
+        noClicks = 0;
+        yesScale = 1;
 
         output.innerHTML = `
 
@@ -702,6 +709,7 @@ function unlockSecret(){
                 <div class="answer-buttons">
 
                     <button
+                        id="yesButton"
                         class="yes-button"
                         onclick="chooseYes()">
 
@@ -710,6 +718,7 @@ function unlockSecret(){
                     </button>
 
                     <button
+                        id="noButton"
                         class="no-button"
                         onclick="chooseNo()">
 
@@ -772,26 +781,74 @@ function chooseYes(){
 
 function chooseNo(){
 
+    noClicks++;
+
+    const yesButton =
+        document.getElementById("yesButton");
+
     const message =
         document.getElementById("answerMessage");
 
-    message.innerHTML = `
+    /*
+       YES grows a little each time,
+       but NO remains available.
+       Maximum 3 growth levels.
+    */
 
-        <div class="final-message">
+    if(noClicks <= 3){
 
-            🌙 That's completely okay. 💜
+        yesScale = 1 + (noClicks * 0.15);
 
-            <br><br>
+        yesButton.style.transform =
+            "scale(" + yesScale + ")";
 
-            Thank you for being honest.
+        yesButton.style.boxShadow =
+            "0 0 " + (20 + noClicks * 10) +
+            "px #c084fc";
 
-            <br><br>
+        const messages = [
 
-            You can still explore
-            the purple universe! ✨
+            "🌙 That's okay! The YES button got a little bigger. 💜",
 
-        </div>
-    `;
+            "✨ Still okay! The purple magic is getting stronger. 💜",
+
+            "💜 Three times! The YES button has reached its maximum size. 🌌"
+
+        ];
+
+        message.innerHTML = `
+
+            <div class="final-message">
+
+                ${messages[noClicks - 1]}
+
+                <br><br>
+
+                <small>
+                    You can choose either option. 😊
+                </small>
+
+            </div>
+        `;
+
+        heartRain(8);
+
+    }else{
+
+        message.innerHTML = `
+
+            <div class="final-message">
+
+                🌙 No worries! 💜
+
+                <br><br>
+
+                The choices are still yours.
+                The purple universe is here either way. ✨
+
+            </div>
+        `;
+    }
 }
 
 
