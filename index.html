@@ -403,7 +403,303 @@ footer{
         padding:25px 18px;
     }
 
+}/* LETTERS TO THE UNIVERSE */
+#letters-universe {
+    width: 100%;
+    margin: 60px auto 30px;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #ffffff;
 }
+
+.letters-card {
+    max-width: 650px;
+    margin: auto;
+    padding: 30px 24px;
+    background: rgba(35, 15, 65, 0.82);
+    border: 1px solid rgba(192, 132, 252, 0.5);
+    border-radius: 24px;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.letters-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+    animation: lettersGlow 2.5s ease-in-out infinite alternate;
+}
+
+.letters-card h2 {
+    color: #e9d5ff;
+    font-size: clamp(24px, 5vw, 34px);
+    margin: 10px 0;
+}
+
+.letters-description {
+    color: #d8b4fe;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.question-progress {
+    color: #c084fc;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+
+#question-title {
+    color: #f3e8ff;
+    font-size: 21px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+#question-answer input,
+#question-answer select,
+#question-answer textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid #a855f7;
+    border-radius: 12px;
+    background: rgba(15, 10, 30, 0.85);
+    color: white;
+    font: inherit;
+    outline: none;
+}
+
+#question-answer input:focus,
+#question-answer select:focus,
+#question-answer textarea:focus {
+    border-color: #e9d5ff;
+    box-shadow: 0 0 12px rgba(192, 132, 252, 0.35);
+}
+
+#question-answer textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#question-answer select option {
+    background: #24103e;
+    color: white;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.question-buttons button {
+    padding: 12px 24px;
+    border: 1px solid #c084fc;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.question-buttons button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 16px rgba(192, 132, 252, 0.5);
+}
+
+.question-buttons button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.letters-note {
+    color: #c4b5fd;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 25px;
+}
+
+#form-message {
+    margin-top: 18px;
+    color: #e9d5ff;
+    overflow-wrap: anywhere;
+}
+
+@keyframes lettersGlow {
+    from {
+        filter: drop-shadow(0 0 4px #a855f7);
+    }
+    to {
+        filter: drop-shadow(0 0 15px #e9d5ff);
+    }
+}
+
+@media (max-width: 480px) {
+    #letters-universe {
+        padding: 10px;
+    }
+
+    .letters-card {
+        padding: 24px 16px;
+    }
+
+    .question-buttons button {
+        padding: 11px 20px;
+    }
+    }/* LETTERS TO THE UNIVERSE */
+#letters-universe {
+    width: 100%;
+    margin: 60px auto 30px;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #ffffff;
+}
+
+.letters-card {
+    max-width: 650px;
+    margin: auto;
+    padding: 30px 24px;
+    background: rgba(35, 15, 65, 0.82);
+    border: 1px solid rgba(192, 132, 252, 0.5);
+    border-radius: 24px;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.letters-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+    animation: lettersGlow 2.5s ease-in-out infinite alternate;
+}
+
+.letters-card h2 {
+    color: #e9d5ff;
+    font-size: clamp(24px, 5vw, 34px);
+    margin: 10px 0;
+}
+
+.letters-description {
+    color: #d8b4fe;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.question-progress {
+    color: #c084fc;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+
+#question-title {
+    color: #f3e8ff;
+    font-size: 21px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+#question-answer input,
+#question-answer select,
+#question-answer textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid #a855f7;
+    border-radius: 12px;
+    background: rgba(15, 10, 30, 0.85);
+    color: white;
+    font: inherit;
+    outline: none;
+}
+
+#question-answer input:focus,
+#question-answer select:focus,
+#question-answer textarea:focus {
+    border-color: #e9d5ff;
+    box-shadow: 0 0 12px rgba(192, 132, 252, 0.35);
+}
+
+#question-answer textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#question-answer select option {
+    background: #24103e;
+    color: white;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.question-buttons button {
+    padding: 12px 24px;
+    border: 1px solid #c084fc;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.question-buttons button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 16px rgba(192, 132, 252, 0.5);
+}
+
+.question-buttons button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.letters-note {
+    color: #c4b5fd;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 25px;
+}
+
+#form-message {
+    margin-top: 18px;
+    color: #e9d5ff;
+    overflow-wrap: anywhere;
+}
+
+@keyframes lettersGlow {
+    from {
+        filter: drop-shadow(0 0 4px #a855f7);
+    }
+    to {
+        filter: drop-shadow(0 0 15px #e9d5ff);
+    }
+}
+
+@media (max-width: 480px) {
+    #letters-universe {
+        padding: 10px;
+    }
+
+    .letters-card {
+        padding: 24px 16px;
+    }
+
+    .question-buttons button {
+        padding: 11px 20px;
+    }
+    }
 </style>
 </head>
 
@@ -567,7 +863,70 @@ footer{
 
 
     <footer>
-        Made with 💜 under the purple stars ✨
+        <!-- LETTERS TO THE UNIVERSE -->
+<section id="letters-universe">
+
+    <div class="letters-card">
+
+        <div class="letters-icon">🌙✨</div>
+
+        <h2>Letters to the Universe 💜</h2>
+
+        <p class="letters-description">
+            Every star holds a little secret.
+            Here is a little space just for you. 🌌
+        </p>
+
+        <div class="question-progress">
+            QUESTION <span id="question-number">1</span> OF 6
+        </div>
+
+        <div id="question-card">
+
+            <h3 id="question-title">
+                🌸 What should I call you?
+            </h3>
+
+            <div id="question-answer">
+                <input
+                    type="text"
+                    id="answer-input"
+                    placeholder="Write your answer here..."
+                    maxlength="200"
+                >
+            </div>
+
+        </div>
+
+        <div class="question-buttons">
+
+            <button
+                type="button"
+                id="back-button"
+                onclick="previousQuestion()"
+                disabled>
+                ← Back
+            </button>
+
+            <button
+                type="button"
+                id="next-button"
+                onclick="nextQuestion()">
+                Next ✨
+            </button>
+
+        </div>
+
+        <p class="letters-note">
+            💜 Your answers will be saved when you submit them.
+            Only the authorized website owner can read them.
+        </p>
+
+        <div id="form-message"></div>
+
+    </div>
+
+</section> 
     </footer>
 
 </div>
@@ -908,7 +1267,171 @@ function heartRain(amount){
         },i * 80);
     }
 }
+// LETTERS TO THE UNIVERSE - QUESTION SYSTEM
 
+const universeQuestions = [
+    {
+        title: "🌸 What should I call you?",
+        type: "text",
+        placeholder: "Write your answer here..."
+    },
+    {
+        title: "💜 Which BTS member is your favorite?",
+        type: "select",
+        options: [
+            "RM",
+            "Jin",
+            "SUGA",
+            "j-hope",
+            "Jimin",
+            "V",
+            "Jungkook",
+            "All seven 💜"
+        ]
+    },
+    {
+        title: "🎵 What's your favorite BTS song?",
+        type: "text",
+        placeholder: "Tell me your favorite song..."
+    },
+    {
+        title: "✨ What's a memory that makes you smile?",
+        type: "textarea",
+        placeholder: "Share a happy memory..."
+    },
+    {
+        title: "🌌 If you could visit any anime world, which would you choose?",
+        type: "text",
+        placeholder: "Name your favorite anime world..."
+    },
+    {
+        title: "💌 Is there anything you'd like to share?",
+        type: "textarea",
+        placeholder: "Write anything you'd like..."
+    }
+];
+
+let universeCurrentQuestion = 0;
+const universeAnswers = {};
+
+function renderUniverseQuestion() {
+    const question = universeQuestions[universeCurrentQuestion];
+
+    document.getElementById("question-number").textContent =
+        universeCurrentQuestion + 1;
+
+    document.getElementById("question-title").textContent =
+        question.title;
+
+    const answerArea = document.getElementById("question-answer");
+
+    answerArea.innerHTML = "";
+
+    let field;
+
+    if (question.type === "select") {
+        field = document.createElement("select");
+
+        const placeholderOption = document.createElement("option");
+        placeholderOption.value = "";
+        placeholderOption.textContent = "Choose your favorite...";
+        field.appendChild(placeholderOption);
+
+        question.options.forEach(function (optionText) {
+            const option = document.createElement("option");
+            option.value = optionText;
+            option.textContent = optionText;
+            field.appendChild(option);
+        });
+
+    } else if (question.type === "textarea") {
+        field = document.createElement("textarea");
+        field.placeholder = question.placeholder;
+        field.maxLength = 2000;
+
+    } else {
+        field = document.createElement("input");
+        field.type = "text";
+        field.placeholder = question.placeholder;
+        field.maxLength = 200;
+    }
+
+    field.id = "answer-input";
+    field.value = universeAnswers[universeCurrentQuestion] || "";
+
+    answerArea.appendChild(field);
+
+    document.getElementById("back-button").disabled =
+        universeCurrentQuestion === 0;
+
+    const nextButton = document.getElementById("next-button");
+
+    nextButton.textContent =
+        universeCurrentQuestion === universeQuestions.length - 1
+            ? "Finish 💜"
+            : "Next ✨";
+
+    document.getElementById("form-message").textContent = "";
+}
+
+function nextQuestion() {
+    const field = document.getElementById("answer-input");
+
+    universeAnswers[universeCurrentQuestion] = field.value.trim();
+
+    if (universeCurrentQuestion < universeQuestions.length - 1) {
+        universeCurrentQuestion++;
+        renderUniverseQuestion();
+    } else {
+        showUniverseReview();
+    }
+}
+
+function previousQuestion() {
+    if (universeCurrentQuestion > 0) {
+        const field = document.getElementById("answer-input");
+
+        universeAnswers[universeCurrentQuestion] = field.value.trim();
+
+        universeCurrentQuestion--;
+        renderUniverseQuestion();
+    }
+}
+
+function showUniverseReview() {
+    const answerArea = document.getElementById("question-answer");
+
+    answerArea.innerHTML = "";
+
+    const review = document.createElement("p");
+    review.textContent =
+        "You've reached the end! Your answers are ready for review. 💜";
+
+    answerArea.appendChild(review);
+
+    document.getElementById("question-title").textContent =
+        "🌙 Your Letters to the Universe";
+
+    document.getElementById("question-number").textContent = "6";
+
+    document.getElementById("back-button").disabled = false;
+
+    const nextButton = document.getElementById("next-button");
+
+    nextButton.textContent = "Review Last Answer";
+
+    nextButton.onclick = function () {
+        nextButton.onclick = null;
+        universeCurrentQuestion = universeQuestions.length - 1;
+        renderUniverseQuestion();
+    };
+
+    document.getElementById("form-message").textContent =
+        "Your answers have not been submitted or saved yet.";
+}
+
+// Start the question system after the page loads.
+renderUniverseQuestion();
 </script>
 
 </body>
