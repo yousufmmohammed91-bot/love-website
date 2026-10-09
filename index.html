@@ -1383,7 +1383,7 @@ function nextQuestion() {
         universeCurrentQuestion++;
         renderUniverseQuestion();
     } else {
-        showUniverseReview();
+        showUniverseAnswers();
     }
 }
 
@@ -1431,8 +1431,90 @@ function showUniverseReview() {
 }
 
 // Start the question system after the page loads.
-renderUniverseQuestion();
-</script>
+renderUniverseQuestion(); 
+async function submitUniverseAnswers() {
+    const field = document.getElementById("answer-input");
 
+    universeAnswers[universeCurrentQuestion] = field.value.trim();
+
+    const answers = universeQuestions.map(function (_, index) {
+        return universeAnswers[index] || "";
+    });
+
+    const message = document.getElementById("form-message");
+    const button = document.getElementById("next-button");
+
+    button.disabled = true;
+    message.textContent = "Saving your letters... 💜";
+
+    try {
+        if (typeof window.saveUniverseAnswers !== "function") {
+            throw new Error("Firebase is not connected.");
+        }
+
+        await window.saveUniverseAnswers(answers);
+
+        message.textContent =
+            "Your letters have been saved successfully! 🌙💜";
+
+        document.getElementById("question-title").textContent =
+            "Thank you for sharing your universe! ✨";
+
+        document.getElementById("question-answer").innerHTML = "";
+
+        button.textContent = "Completed 💜";
+    } catch (error) {
+        console.error("Submission failed:", error);
+
+        message.textContent =
+            "Unable to save your answers. Please check your connection and try again.";
+
+        button.disabled = false;
+    }
+        } 
+</script>
+<script type="module">
+import { initializeApp } from
+  "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+// Replace these placeholders with your actual Firebase web configuration.
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "herlittleuniverse-1ec64",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.saveUniverseAnswers = async function (answers) {
+  const answerData = {};
+
+  for (let i = 1; i <= 6; i++) {
+    const value = answers[i - 1];
+
+    if (typeof value !== "string") {
+      throw new Error("Please check all six answers.");
+    }
+
+    answerData["q" + i] = value;
+  }
+
+  await addDoc(collection(db, "submissions"), {
+    answers: answerData,
+    createdAt: serverTimestamp()
+  });
+};
+</script>
 </body>
 </html>
