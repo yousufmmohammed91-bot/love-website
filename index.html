@@ -3,1311 +3,706 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Purple Universe 💜</title>
+<title>Her Little Universe 💜</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    min-height:100vh;
-    overflow-x:hidden;
-    font-family:Arial,sans-serif;
-    color:white;
-    background:
-        radial-gradient(circle at 50% 20%,#7e22ce55,transparent 30%),
-        radial-gradient(circle at 20% 80%,#a855f733,transparent 25%),
-        linear-gradient(180deg,#03000b,#10001f,#05000d);
-}
-
-/* STARS */
-
-#stars{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:0;
-}
-
-.star{
-    position:absolute;
-    width:3px;
-    height:3px;
-    background:white;
-    border-radius:50%;
-    opacity:.7;
-    animation:twinkle 2s infinite alternate;
-}
-
-@keyframes twinkle{
-    from{
-        opacity:.2;
-        transform:scale(.7);
-    }
-    to{
-        opacity:1;
-        transform:scale(1.5);
-    }
-}
-
-/* OPENING */
-
-#opening{
-    position:relative;
-    z-index:5;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-.title{
-    font-size:clamp(30px,7vw,60px);
-    color:#f1d5ff;
-    text-shadow:
-        0 0 10px #c084fc,
-        0 0 30px #9333ea;
-    margin-bottom:20px;
-    animation:titleFloat 3s infinite ease-in-out;
-}
-
-@keyframes titleFloat{
-    50%{
-        transform:translateY(-10px);
-    }
-}
-
-.subtitle{
-    color:#d8b4fe;
-    font-size:18px;
-    margin-bottom:70px;
-}
-
-/* HEART */
-
-.heart-container{
-    position:relative;
-    width:180px;
-    height:180px;
-    cursor:pointer;
-    animation:heartFloat 2s infinite ease-in-out;
-}
-
-@keyframes heartFloat{
-    50%{
-        transform:translateY(-15px);
-    }
-}
-
-.heart{
-    position:absolute;
-    width:120px;
-    height:120px;
-    left:30px;
-    top:30px;
-    background:#a855f7;
-    transform:rotate(-45deg);
-    box-shadow:
-        0 0 20px #c084fc,
-        0 0 50px #9333ea,
-        0 0 100px #7e22ce;
-    animation:heartPulse 1.4s infinite;
-}
-
-.heart:before,
-.heart:after{
-    content:"";
-    position:absolute;
-    width:120px;
-    height:120px;
-    background:#a855f7;
-    border-radius:50%;
-}
-
-.heart:before{
-    top:-60px;
-    left:0;
-}
-
-.heart:after{
-    left:60px;
-    top:0;
-}
-
-@keyframes heartPulse{
-    50%{
-        transform:rotate(-45deg) scale(1.12);
-    }
-}
-
-.heart-text{
-    position:absolute;
-    z-index:10;
-    width:180px;
-    top:82px;
-    left:0;
-    font-weight:bold;
-    color:white;
-    text-shadow:0 0 10px white;
-}
-
-/* MAIN */
-
-#main{
-    display:none;
-    position:relative;
-    z-index:5;
-    min-height:100vh;
-    padding:70px 20px;
-}
-
-.container{
-    width:min(1000px,100%);
-    margin:auto;
-    text-align:center;
-}
-
-.section-title{
-    font-size:38px;
-    color:#e9d5ff;
-    text-shadow:0 0 20px #9333ea;
-    margin-bottom:12px;
-}
-
-.description{
-    color:#c4b5fd;
-    margin-bottom:45px;
-}
-
-/* INTRO */
-
-.intro-card{
-    max-width:750px;
-    margin:0 auto 70px;
-    padding:35px;
-    border-radius:30px;
-    background:#ffffff0b;
-    border:1px solid #a855f755;
-    backdrop-filter:blur(12px);
-    box-shadow:0 0 40px #7e22ce22;
-}
-
-.intro-card h2{
-    color:#e9b8ff;
-    margin-bottom:15px;
-}
-
-.intro-card p{
-    color:#ddd6fe;
-    line-height:1.8;
-}
-
-/* BTS */
-
-.bts-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:18px;
-    margin-bottom:35px;
-}
-
-.member{
-    padding:25px 15px;
-    border-radius:25px;
-    cursor:pointer;
-    background:linear-gradient(145deg,#ffffff0e,#7e22ce22);
-    border:1px solid #a855f766;
-    transition:.4s;
-    backdrop-filter:blur(10px);
-}
-
-.member:hover{
-    transform:translateY(-8px) scale(1.03);
-    box-shadow:0 0 30px #9333ea88;
-}
-
-.member-icon{
-    font-size:42px;
-    margin-bottom:10px;
-}
-
-.member h3{
-    color:#f3d8ff;
-    margin-bottom:5px;
-}
-
-.member p{
-    font-size:13px;
-    color:#c4b5fd;
-}
-
-/* MEMBER MESSAGE */
-
-#memberMessage{
-    min-height:100px;
-    padding:25px;
-    margin:30px auto 70px;
-    max-width:700px;
-    border-radius:25px;
-    background:#ffffff08;
-    border:1px solid #9333ea55;
-    color:#e9d5ff;
-    line-height:1.7;
-}
-
-/* SECRET */
-
-.secret-box{
-    max-width:650px;
-    margin:auto;
-    padding:40px 25px;
-    border-radius:30px;
-    background:linear-gradient(145deg,#7e22ce18,#ffffff08);
-    border:1px solid #a855f766;
-    box-shadow:0 0 50px #7e22ce22;
-}
-
-.secret-box h2{
-    color:#e9b8ff;
-    margin-bottom:10px;
-}
-
-.secret-box p{
-    color:#c4b5fd;
-    margin-bottom:20px;
-}
-
-input{
-    width:min(320px,90%);
-    padding:15px 20px;
-    border:none;
-    outline:none;
-    border-radius:30px;
-    background:#ffffff12;
-    color:white;
-    border:1px solid #a855f755;
-    text-align:center;
-}
-
-button{
-    margin:10px;
-    padding:14px 25px;
-    border:none;
-    border-radius:30px;
-    background:#9333ea;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-    box-shadow:0 0 20px #9333ea55;
-}
-
-button:hover{
-    transform:scale(1.05);
-    background:#a855f7;
-}
-
-.answer-buttons{
-    margin-top:20px;
-}
-
-.yes-button{
-    background:#a855f7;
-    font-size:18px;
-    transition:transform .35s ease, box-shadow .35s ease;
-}
-
-.no-button{
-    background:#312e81;
-    font-size:18px;
-}
-
-#secretMessage{
-    margin-top:25px;
-    color:#f0abfc;
-    font-size:20px;
-    line-height:1.6;
-}
-
-.secret-reveal{
-    animation:reveal .8s ease;
-}
-
-@keyframes reveal{
-    from{
-        opacity:0;
-        transform:translateY(20px) scale(.95);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-.final-message{
-    margin-top:25px;
-    padding:20px;
-    border-radius:20px;
-    background:#ffffff0d;
-    color:#f0abfc;
-    line-height:1.7;
-    animation:reveal .7s ease;
-}
-
-/* HEART RAIN */
-
-.floating-heart{
-    position:fixed;
-    top:-50px;
-    z-index:100;
-    pointer-events:none;
-    font-size:25px;
-    animation:heartFall linear forwards;
-}
-
-@keyframes heartFall{
-    to{
-        transform:translateY(110vh) rotate(360deg);
-        opacity:0;
-    }
-}
-
-footer{
-    margin-top:70px;
-    color:#8b5cf6;
-    font-size:13px;
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-    #main{
-        padding:50px 15px;
-    }
-
-    .section-title{
-        font-size:30px;
-    }
-
-    .intro-card{
-        padding:25px 18px;
-    }
-
-}/* LETTERS TO THE UNIVERSE */
-#letters-universe {
-    width: 100%;
-    margin: 60px auto 30px;
-    padding: 20px;
+* {
     box-sizing: border-box;
-    color: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: #f7edff;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #10051f, #281044, #10051f);
+    overflow-x: hidden;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#d7aaff 1px, transparent 1px);
+    background-size: 70px 70px, 110px 110px;
+    background-position: 0 0, 35px 45px;
+    opacity: 0.35;
+}
+
+section {
+    padding: 45px 16px;
+    text-align: center;
+}
+
+.card {
+    width: min(100%, 650px);
+    margin: auto;
+    padding: 28px 20px;
+    border: 1px solid rgba(226, 184, 255, 0.35);
+    border-radius: 24px;
+    background: rgba(46, 20, 73, 0.8);
+    box-shadow: 0 0 25px rgba(178, 100, 255, 0.15);
+}
+
+h1, h2 {
+    color: #efcaff;
+}
+
+p {
+    line-height: 1.8;
+}
+
+.primary-button {
+    border: 0;
+    border-radius: 28px;
+    padding: 13px 23px;
+    color: white;
+    background: linear-gradient(135deg, #7928ca, #d946ef);
+    box-shadow: 0 0 18px rgba(194, 120, 255, 0.3);
+}
+
+/* OPENING SCREEN */
+
+#opening-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opening-heart {
+    font-size: 85px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+/* MAIN WEBSITE */
+
+#main-content {
+    display: none;
+}
+
+.hero {
+    padding-top: 70px;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 7vw, 48px);
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.member-card {
+    padding: 18px 10px;
+    border-radius: 18px;
+    border: 1px solid rgba(220, 180, 255, 0.25);
+    background: rgba(105, 50, 145, 0.2);
+}
+
+.member-card .emoji {
+    font-size: 35px;
+}
+
+.secret-word {
+    margin-top: 15px;
+}
+
+.secret-word input {
+    width: min(100%, 260px);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #c99aff;
+}
+
+/* PROPOSAL */
+
+.proposal-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+#yes-button, #no-button {
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+}
+
+#yes-button {
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    color: white;
+}
+
+#no-button {
+    background: #eee4f5;
+    color: #51276e;
+}
+
+#proposal-response {
+    color: #f0caff;
+    min-height: 35px;
+}
+
+/* SECRET DOOR */
+
+#secret-door {
+    padding-top: 30px;
+}
+
+.secret-icon {
+    font-size: 55px;
+}
+
+.secret-door-card button {
+    margin-top: 12px;
+}
+
+/* LETTERS TO THE UNIVERSE */
+
+#letters-universe {
+    display: none;
+    scroll-margin-top: 20px;
 }
 
 .letters-card {
-    max-width: 650px;
+    width: min(100%, 600px);
     margin: auto;
-    padding: 30px 24px;
-    background: rgba(35, 15, 65, 0.82);
-    border: 1px solid rgba(192, 132, 252, 0.5);
+    padding: 25px 18px;
     border-radius: 24px;
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
-    text-align: center;
-    box-sizing: border-box;
+    border: 1px solid rgba(200, 150, 255, 0.5);
+    background: rgba(45, 20, 75, 0.9);
+    box-shadow: 0 0 25px rgba(180, 100, 255, 0.3);
 }
 
 .letters-icon {
-    font-size: 42px;
-    margin-bottom: 12px;
-    animation: lettersGlow 2.5s ease-in-out infinite alternate;
-}
-
-.letters-card h2 {
-    color: #e9d5ff;
-    font-size: clamp(24px, 5vw, 34px);
-    margin: 10px 0;
-}
-
-.letters-description {
-    color: #d8b4fe;
-    line-height: 1.7;
-    margin-bottom: 25px;
+    font-size: 45px;
 }
 
 .question-progress {
-    color: #c084fc;
-    font-size: 12px;
+    color: #d8b5ff;
+    margin: 22px 0;
+    font-size: 13px;
     letter-spacing: 2px;
-    margin-bottom: 22px;
-}
-
-#question-title {
-    color: #f3e8ff;
-    font-size: 21px;
-    line-height: 1.5;
-    margin-bottom: 20px;
 }
 
 #question-answer input,
 #question-answer select,
 #question-answer textarea {
-    display: block;
     width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 14px;
-    border: 1px solid #a855f7;
+    padding: 13px;
+    border: 1px solid #b987ec;
     border-radius: 12px;
-    background: rgba(15, 10, 30, 0.85);
-    color: white;
-    font: inherit;
-    outline: none;
-}
-
-#question-answer input:focus,
-#question-answer select:focus,
-#question-answer textarea:focus {
-    border-color: #e9d5ff;
-    box-shadow: 0 0 12px rgba(192, 132, 252, 0.35);
-}
-
-#question-answer textarea {
-    min-height: 120px;
-    resize: vertical;
+    color: #fff;
+    background: #291342;
 }
 
 #question-answer select option {
-    background: #24103e;
     color: white;
+    background: #291342;
+}
+
+#question-answer textarea {
+    min-height: 110px;
+    resize: vertical;
 }
 
 .question-buttons {
     display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin-top: 24px;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 22px;
 }
 
 .question-buttons button {
-    padding: 12px 24px;
-    border: 1px solid #c084fc;
-    border-radius: 25px;
-    background: linear-gradient(135deg, #7c3aed, #a855f7);
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    flex: 1;
+    padding: 12px;
+    border: 0;
+    border-radius: 20px;
 }
 
-.question-buttons button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 0 16px rgba(192, 132, 252, 0.5);
+#back-button {
+    color: white;
+    background: #573576;
+}
+
+#next-button {
+    color: white;
+    background: linear-gradient(135deg, #7928ca, #d946ef);
 }
 
 .question-buttons button:disabled {
-    opacity: 0.4;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
 .letters-note {
-    color: #c4b5fd;
     font-size: 12px;
-    line-height: 1.6;
-    margin-top: 25px;
+    color: #d6c3e8;
 }
 
 #form-message {
     margin-top: 18px;
-    color: #e9d5ff;
-    overflow-wrap: anywhere;
+    color: #f0caff;
 }
 
-@keyframes lettersGlow {
-    from {
-        filter: drop-shadow(0 0 4px #a855f7);
-    }
-    to {
-        filter: drop-shadow(0 0 15px #e9d5ff);
-    }
-}
+/* POPUP */
 
-@media (max-width: 480px) {
-    #letters-universe {
-        padding: 10px;
-    }
-
-    .letters-card {
-        padding: 24px 16px;
-    }
-
-    .question-buttons button {
-        padding: 11px 20px;
-    }
-    }/* LETTERS TO THE UNIVERSE */
-#letters-universe {
-    width: 100%;
-    margin: 60px auto 30px;
+#universe-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    box-sizing: border-box;
-    color: #ffffff;
+    background: rgba(9, 2, 20, 0.85);
 }
 
-.letters-card {
-    max-width: 650px;
-    margin: auto;
-    padding: 30px 24px;
-    background: rgba(35, 15, 65, 0.82);
-    border: 1px solid rgba(192, 132, 252, 0.5);
-    border-radius: 24px;
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.letters-icon {
-    font-size: 42px;
-    margin-bottom: 12px;
-    animation: lettersGlow 2.5s ease-in-out infinite alternate;
-}
-
-.letters-card h2 {
-    color: #e9d5ff;
-    font-size: clamp(24px, 5vw, 34px);
-    margin: 10px 0;
-}
-
-.letters-description {
-    color: #d8b4fe;
-    line-height: 1.7;
-    margin-bottom: 25px;
-}
-
-.question-progress {
-    color: #c084fc;
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin-bottom: 22px;
-}
-
-#question-title {
-    color: #f3e8ff;
-    font-size: 21px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-#question-answer input,
-#question-answer select,
-#question-answer textarea {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 14px;
-    border: 1px solid #a855f7;
-    border-radius: 12px;
-    background: rgba(15, 10, 30, 0.85);
-    color: white;
-    font: inherit;
-    outline: none;
-}
-
-#question-answer input:focus,
-#question-answer select:focus,
-#question-answer textarea:focus {
-    border-color: #e9d5ff;
-    box-shadow: 0 0 12px rgba(192, 132, 252, 0.35);
-}
-
-#question-answer textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-#question-answer select option {
-    background: #24103e;
-    color: white;
-}
-
-.question-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin-top: 24px;
-}
-
-.question-buttons button {
-    padding: 12px 24px;
-    border: 1px solid #c084fc;
+.popup-card {
+    width: min(100%, 420px);
+    padding: 30px 22px;
     border-radius: 25px;
-    background: linear-gradient(135deg, #7c3aed, #a855f7);
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    background: linear-gradient(145deg, #351052, #160725);
+    border: 1px solid #d5a2ff;
+    box-shadow: 0 0 35px rgba(188, 100, 255, 0.4);
 }
 
-.question-buttons button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 0 16px rgba(192, 132, 252, 0.5);
+.popup-icon {
+    font-size: 55px;
 }
 
-.question-buttons button:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
+footer {
+    padding: 30px 15px;
+    text-align: center;
+    color: #cbb5e4;
+    font-size: 13px;
 }
 
-.letters-note {
-    color: #c4b5fd;
-    font-size: 12px;
-    line-height: 1.6;
-    margin-top: 25px;
-}
-
-#form-message {
-    margin-top: 18px;
-    color: #e9d5ff;
-    overflow-wrap: anywhere;
-}
-
-@keyframes lettersGlow {
-    from {
-        filter: drop-shadow(0 0 4px #a855f7);
-    }
-    to {
-        filter: drop-shadow(0 0 15px #e9d5ff);
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
-
-@media (max-width: 480px) {
-    #letters-universe {
-        padding: 10px;
-    }
-
-    .letters-card {
-        padding: 24px 16px;
-    }
-
-    .question-buttons button {
-        padding: 11px 20px;
-    }
-    }
 </style>
 </head>
 
 <body>
 
-<div id="stars"></div>
+<div class="stars"></div>
 
-<!-- OPENING -->
-
-<section id="opening">
-
-    <div class="title">
-        A Little Purple Universe 💜
-    </div>
-
-    <div class="subtitle">
-        Something special is waiting for you...
-    </div>
-
-    <div class="heart-container" onclick="enterUniverse()">
-
-        <div class="heart"></div>
-
-        <div class="heart-text">
-            ENTER 💜
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MAIN -->
-
-<section id="main">
-
-<div class="container">
-
-    <h1 class="section-title">
-        Welcome to the Purple Universe 💜
-    </h1>
-
-    <p class="description">
-        A tiny galaxy filled with stars, music and memories ✨
-    </p>
-
-
-    <!-- MESSAGE -->
-
-    <div class="intro-card">
-
-        <h2>🌙 A Little Secret 💜</h2>
-
-<p>
-    If you're reading this, you found something
-    I didn't want everyone to see. ✨
-    I hope this little universe makes you smile. 💜
-</p>
-
-<h2 style="margin-top:25px;">
-    What do you think? 🌙
-</h2>
-
-        <br>
-
-        <p>
-            Explore this little purple universe
-            and see if you can discover its secret. ✨
-        </p>
-
-    </div>
-
-
-    <!-- BTS -->
-
-    <h2 class="section-title">
-        💜 BTS Universe 💜
-    </h2>
-
-    <p class="description">
-        Choose a member
-    </p>
-
-    <div class="bts-grid">
-
-        <div class="member" onclick="showMember('RM')">
-            <div class="member-icon">🐨</div>
-            <h3>RM</h3>
-            <p>Kim Namjoon</p>
-        </div>
-
-        <div class="member" onclick="showMember('Jin')">
-            <div class="member-icon">🐹</div>
-            <h3>Jin</h3>
-            <p>Kim Seokjin</p>
-        </div>
-
-        <div class="member" onclick="showMember('SUGA')">
-            <div class="member-icon">🐱</div>
-            <h3>SUGA</h3>
-            <p>Min Yoongi</p>
-        </div>
-
-        <div class="member" onclick="showMember('j-hope')">
-            <div class="member-icon">🐿️</div>
-            <h3>j-hope</h3>
-            <p>Jung Hoseok</p>
-        </div>
-
-        <div class="member" onclick="showMember('Jimin')">
-            <div class="member-icon">🐥</div>
-            <h3>Jimin</h3>
-            <p>Park Jimin</p>
-        </div>
-
-        <div class="member" onclick="showMember('V')">
-            <div class="member-icon">🐯</div>
-            <h3>V</h3>
-            <p>Kim Taehyung</p>
-        </div>
-
-        <div class="member" onclick="showMember('Jung Kook')">
-            <div class="member-icon">🐰</div>
-            <h3>Jung Kook</h3>
-            <p>Jeon Jungkook</p>
-        </div>
-
-    </div>
-
-
-    <div id="memberMessage">
-        Click a BTS member to reveal a message 💜
-    </div>
-
-
-    <!-- SECRET -->
-
-    <div class="secret-box">
-
-        <h2>🔐 The Hidden Purple Door</h2>
-
-        <p>
-            There is a secret waiting behind this door...
-        </p>
-
-        <input
-            id="secretInput"
-            type="password"
-            placeholder="Enter secret word"
-        >
-
-        <br>
-
-        <button onclick="unlockSecret()">
-            Unlock 💜
+<!-- OPENING SCREEN -->
+<section id="opening-screen">
+    <div class="card">
+        <div class="opening-heart">💜</div>
+        <h1>Her Little Universe</h1>
+        <p>A tiny galaxy made of dreams, stars and special memories. 🌙</p>
+        <button class="primary-button" onclick="enterUniverse()">
+            Enter My Universe ✨
         </button>
-
-        <div id="secretMessage"></div>
-
     </div>
-
-
-    <footer>
-        <!-- LETTERS TO THE UNIVERSE -->
-<section id="letters-universe">
-
-    <div class="letters-card">
-
-        <div class="letters-icon">🌙✨</div>
-
-        <h2>Letters to the Universe 💜</h2>
-
-        <p class="letters-description">
-            Every star holds a little secret.
-            Here is a little space just for you. 🌌
-        </p>
-
-        <div class="question-progress">
-            QUESTION <span id="question-number">1</span> OF 6
-        </div>
-
-        <div id="question-card">
-
-            <h3 id="question-title">
-                🌸 What should I call you?
-            </h3>
-
-            <div id="question-answer">
-                <input
-                    type="text"
-                    id="answer-input"
-                    placeholder="Write your answer here..."
-                    maxlength="200"
-                >
-            </div>
-
-        </div>
-
-        <div class="question-buttons">
-
-            <button
-                type="button"
-                id="back-button"
-                onclick="previousQuestion()"
-                disabled>
-                ← Back
-            </button>
-
-            <button
-                type="button"
-                id="next-button"
-                onclick="nextQuestion()">
-                Next ✨
-            </button>
-
-        </div>
-
-        <p class="letters-note">
-            💜 Your answers will be saved when you submit them.
-            Only the authorized website owner can read them.
-        </p>
-
-        <div id="form-message"></div>
-
-    </div>
-
-</section> 
-    </footer>
-
-</div>
-
 </section>
 
+<!-- MAIN CONTENT -->
+<main id="main-content">
 
-<script>
+    <section class="hero">
+        <div class="card">
+            <h1>Welcome to Your Little Universe 🌌</h1>
+            <p>
+                Somewhere among billions of stars, there are little
+                moments that make life beautiful. This space celebrates
+                those moments. 💜
+            </p>
+        </div>
+    </section>
 
-/* =========================
-   SETTINGS
-========================= */
+    <!-- BTS-INSPIRED SECTION -->
+    <section id="bts-section">
+        <div class="card">
+            <h2>A Little BTS Corner 🎤💜</h2>
+            <p>
+                Music can turn ordinary moments into unforgettable
+                memories. Here is a little space for your favourite
+                music and artists.
+            </p>
 
-const SECRET_WORD = "purple";
-
-let noClicks = 0;
-let yesScale = 1;
-
-
-/* =========================
-   STARS
-========================= */
-
-const stars = document.getElementById("stars");
-
-for(let i = 0; i < 150; i++){
-
-    const star = document.createElement("div");
-
-    star.className = "star";
-
-    star.style.left =
-        Math.random() * 100 + "%";
-
-    star.style.top =
-        Math.random() * 100 + "%";
-
-    star.style.animationDelay =
-        Math.random() * 3 + "s";
-
-    stars.appendChild(star);
-}
-
-
-/* =========================
-   ENTER UNIVERSE
-========================= */
-
-function enterUniverse(){
-
-    document.getElementById("opening").style.display = "none";
-
-    document.getElementById("main").style.display = "block";
-
-    heartRain(20);
-
-    window.scrollTo(0,0);
-}
-
-
-/* =========================
-   BTS MESSAGES
-========================= */
-
-const messages = {
-
-    "RM":
-    "Keep learning, keep growing and keep shining in your own way. 💜",
-
-    "Jin":
-    "Don't forget to smile. Sometimes a little smile makes a big difference. ✨",
-
-    "SUGA":
-    "Protect your peace and always stay true to yourself. 🌙",
-
-    "j-hope":
-    "Keep your sunshine alive and spread a little happiness. ☀️",
-
-    "Jimin":
-    "Beautiful moments can appear when you least expect them. 💜",
-
-    "V":
-    "Stay wonderfully unique. Your individuality makes you special. 🌌",
-
-    "Jung Kook":
-    "Keep chasing the things that make you happy. ✨"
-
-};
-
-
-function showMember(member){
-
-    const box =
-        document.getElementById("memberMessage");
-
-    box.innerHTML =
-        "<strong>" +
-        member +
-        "</strong><br><br>" +
-        messages[member];
-
-    heartRain(8);
-}
-
-
-/* =========================
-   SECRET WORD
-========================= */
-
-function unlockSecret(){
-
-    const input =
-        document
-        .getElementById("secretInput")
-        .value
-        .trim();
-
-    const output =
-        document
-        .getElementById("secretMessage");
-
-
-    if(input.toLowerCase() === SECRET_WORD.toLowerCase()){
-
-        noClicks = 0;
-        yesScale = 1;
-
-        output.innerHTML = `
-
-    <div class="secret-reveal">
-
-        <h2>💜 You Found My Secret 💜</h2>
-
-        <p>
-            Hey! You actually found it! ✨
-            I made this little universe especially for you. 💜
-        </p>
-
-        <h2 style="margin-top:25px;">
-            What do you think? 🌙
-        </h2>
-
-                <div class="answer-buttons">
-
-                    <button
-                        id="yesButton"
-                        class="yes-button"
-                        onclick="chooseYes()">
-
-                        YES 💜
-
-                    </button>
-
-                    <button
-                        id="noButton"
-                        class="no-button"
-                        onclick="chooseNo()">
-
-                        NO 🌙
-
-                    </button>
-
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="emoji">🐨</div>
+                    <h3>RM</h3>
+                    <p>Thoughtful words</p>
                 </div>
 
-                <div id="answerMessage"></div>
+                <div class="member-card">
+                    <div class="emoji">🐹</div>
+                    <h3>Jin</h3>
+                    <p>Bright moments</p>
+                </div>
 
+                <div class="member-card">
+                    <div class="emoji">🐱</div>
+                    <h3>SUGA</h3>
+                    <p>Music and dreams</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐿️</div>
+                    <h3>j-hope</h3>
+                    <p>Positive energy</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐥</div>
+                    <h3>Jimin</h3>
+                    <p>Gentle moments</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐻</div>
+                    <h3>V</h3>
+                    <p>Art and imagination</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐰</div>
+                    <h3>Jungkook</h3>
+                    <p>Endless creativity</p>
+                </div>
             </div>
-        `;
+        </div>
+    </section>
 
-        heartRain(25);
+    <!-- SECRET WORD -->
+    <section id="secret-word-section">
+        <div class="card">
+            <h2>A Tiny Secret 🔐</h2>
+            <p>Somewhere in this universe is a little secret word.</p>
 
-    }else{
+            <div class="secret-word">
+                <input id="secret-word-input"
+                    type="password"
+                    placeholder="Enter the secret word"
+                    maxlength="50">
 
-        output.innerHTML =
-            "Not quite... try again 💜";
+                <button class="primary-button"
+                    onclick="checkSecretWord()">
+                    Unlock 💜
+                </button>
+            </div>
 
+            <p id="secret-word-message"></p>
+        </div>
+    </section>
+
+    <!-- PROPOSAL -->
+    <section id="proposal-section">
+        <div class="card">
+            <div class="proposal-heart" style="font-size:50px">💜🌌</div>
+            <h2>One Question from My Heart...</h2>
+
+            <p id="proposal-message">
+                In this endless universe, meeting you feels like
+                finding my favourite star. ✨
+                <br><br>
+                Would you give this little love story a chance?
+            </p>
+
+            <div class="proposal-buttons">
+                <button id="yes-button" onclick="acceptProposal()">
+                    Yes 💜
+                </button>
+
+                <button id="no-button" onclick="handleNoClick()">
+                    No 💔
+                </button>
+            </div>
+
+            <p id="proposal-response" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <!-- SECRET DOOR -->
+    <section id="secret-door">
+        <div class="card secret-door-card">
+            <div class="secret-icon">🚪✨</div>
+            <h2>A Secret Universe 💜</h2>
+            <p>
+                Some messages are written among the stars.
+                There is a little space waiting for your thoughts. 🌙
+            </p>
+
+            <button class="primary-button"
+                onclick="openSecretUniverse()">
+                Open the Secret Door 🌙
+            </button>
+        </div>
+    </section>
+
+    <!-- LETTERS TO THE UNIVERSE -->
+    <section id="letters-universe">
+        <div class="letters-card">
+            <div class="letters-icon">🌙✨</div>
+            <h2>Letters to the Universe 💜</h2>
+
+            <p class="letters-description">
+                Every star holds a little secret.
+                Here is a little space just for you. 🌌
+            </p>
+
+            <div class="question-progress">
+                QUESTION <span id="question-number">1</span> OF 6
+            </div>
+
+            <div id="question-card">
+                <h3 id="question-title">🌸 What should I call you?</h3>
+                <div id="question-answer"></div>
+            </div>
+
+            <div class="question-buttons">
+                <button type="button" id="back-button"
+                    onclick="previousQuestion()" disabled>
+                    ← Back
+                </button>
+
+                <button type="button" id="next-button"
+                    onclick="nextQuestion()">
+                    Next ✨
+                </button>
+            </div>
+
+            <p class="letters-note">
+                💜 Please share only what you feel comfortable sharing.
+            </p>
+
+            <div id="form-message" aria-live="polite"></div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Made with 💜 and a little stardust.
+</footer>
+
+<!-- SUCCESS POPUP -->
+<div id="universe-popup" role="dialog"
+    aria-modal="true" aria-labelledby="popup-title">
+
+    <div class="popup-card">
+        <div class="popup-icon">🌙✨</div>
+
+        <h2 id="popup-title">A Message to the Universe</h2>
+
+        <p>
+            Your little universe has been heard. 💜
+            <br><br>
+            Thank you for sharing your thoughts among the stars.
+            May your dreams always shine brightly! 🌌
+        </p>
+
+        <button class="primary-button" onclick="closeUniversePopup()">
+            Close ✨
+        </button>
+    </div>
+</div>
+
+<!-- FIREBASE CONNECTION -->
+<script type="module">
+import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+/*
+  Replace these placeholder values with the Firebase Web App
+  configuration from Firebase Console → Project settings → Your apps.
+*/
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "herlittleuniverse-1ec64",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.saveUniverseAnswers = async function (answers) {
+    if (!Array.isArray(answers) || answers.length !== 6) {
+        throw new Error("Please complete all six questions.");
+    }
+
+    const answerData = {};
+
+    for (let i = 0; i < 6; i++) {
+        if (typeof answers[i] !== "string") {
+            throw new Error("Please check your answers.");
+        }
+
+        answerData["q" + (i + 1)] = answers[i].slice(0, 1000);
+    }
+
+    await addDoc(collection(db, "submissions"), {
+        answers: answerData,
+        createdAt: serverTimestamp()
+    });
+};
+</script>
+
+<!-- WEBSITE INTERACTIONS -->
+<script>
+function enterUniverse() {
+    document.getElementById("opening-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* SECRET WORD */
+
+function checkSecretWord() {
+    const input = document.getElementById("secret-word-input");
+    const message = document.getElementById("secret-word-message");
+
+    if (input.value.trim().toLowerCase() === "purple") {
+        message.textContent = "You found the secret! 💜✨";
+    } else {
+        message.textContent = "Not quite! Keep looking among the stars. 🌌";
     }
 }
 
+/* PROPOSAL */
 
-/* =========================
-   YES
-========================= */
+let noClickCount = 0;
+let yesButtonScale = 1;
 
-function chooseYes(){
+function handleNoClick() {
+    noClickCount++;
 
-    const message =
-        document.getElementById("answerMessage");
+    const yesButton = document.getElementById("yes-button");
+    const message = document.getElementById("proposal-message");
+    const response = document.getElementById("proposal-response");
 
-    message.innerHTML = `
-
-        <div class="final-message">
-
-            💜✨ YAY! ✨💜
-
-            <br><br>
-
-            Thank you for being honest. 💜
-
-            <br><br>
-
-            This little purple universe
-            was made for this moment. 🌌
-
-        </div>
-    `;
-
-    heartRain(60);
-}
-
-
-/* =========================
-   NO
-========================= */
-
-function chooseNo(){
-
-    noClicks++;
-
-    const yesButton =
-        document.getElementById("yesButton");
-
-    const message =
-        document.getElementById("answerMessage");
-
-    /*
-       YES grows a little each time,
-       but NO remains available.
-       Maximum 3 growth levels.
-    */
-
-    if(noClicks <= 3){
-
-        yesScale = 1 + (noClicks * 0.15);
-
-        yesButton.style.transform =
-            "scale(" + yesScale + ")";
-
-        yesButton.style.boxShadow =
-            "0 0 " + (20 + noClicks * 10) +
-            "px #c084fc";
+    if (noClickCount <= 3) {
+        yesButtonScale += 0.25;
+        yesButton.style.transform = `scale(${yesButtonScale})`;
 
         const messages = [
-
-            "🌙 That's okay! The YES button got a little bigger. 💜",
-
-            "✨ Still okay! The purple magic is getting stronger. 💜",
-
-            "💜 Three times! The YES button has reached its maximum size. 🌌"
-
+            "That's okay. Every heart deserves time. 💜",
+            "No worries. Your feelings matter. 🌷",
+            "I'll respect your answer, whatever it is. 🌙"
         ];
 
-        message.innerHTML = `
+        response.textContent = messages[noClickCount - 1];
+    } else {
+        message.innerHTML =
+            "Sometimes, the most beautiful stories begin " +
+            "with a simple conversation. ✨<br><br>" +
+            "There is no pressure to say yes. " +
+            "Your honest answer means more than anything. 💜";
 
-            <div class="final-message">
-
-                ${messages[noClicks - 1]}
-
-                <br><br>
-
-                <small>
-                    You can choose either option. 😊
-                </small>
-
-            </div>
-        `;
-
-        heartRain(8);
-
-    }else{
-
-        message.innerHTML = `
-
-            <div class="final-message">
-
-                🌙 No worries! 💜
-
-                <br><br>
-
-                The choices are still yours.
-                The purple universe is here either way. ✨
-
-            </div>
-        `;
+        response.textContent =
+            "You can choose Yes or No. Both answers will be respected.";
     }
 }
 
+function acceptProposal() {
+    const message = document.getElementById("proposal-message");
+    const response = document.getElementById("proposal-response");
 
-/* =========================
-   HEART RAIN
-========================= */
+    message.innerHTML =
+        "🌌💜 A beautiful new chapter begins... 💜🌌";
 
-function heartRain(amount){
+    response.innerHTML =
+        "Thank you for giving this story a chance. ✨<br><br>" +
+        "May our days be filled with laughter, kindness, trust, " +
+        "and unforgettable memories. 🌸";
 
-    for(let i = 0; i < amount; i++){
-
-        setTimeout(function(){
-
-            const heart =
-                document.createElement("div");
-
-            heart.className =
-                "floating-heart";
-
-            const symbols = [
-                "💜",
-                "💖",
-                "💗",
-                "✨",
-                "🌙"
-            ];
-
-            heart.innerHTML =
-                symbols[
-                    Math.floor(
-                        Math.random() *
-                        symbols.length
-                    )
-                ];
-
-            heart.style.left =
-                Math.random() * 100 + "vw";
-
-            heart.style.fontSize =
-                (18 + Math.random() * 25) + "px";
-
-            heart.style.animationDuration =
-                (3 + Math.random() * 4) + "s";
-
-            document.body.appendChild(heart);
-
-            setTimeout(function(){
-
-                heart.remove();
-
-            },7000);
-
-        },i * 80);
-    }
+    document.getElementById("yes-button").disabled = true;
+    document.getElementById("no-button").disabled = true;
 }
-// LETTERS TO THE UNIVERSE - QUESTION SYSTEM
+
+/* SECRET DOOR */
+
+function openSecretUniverse() {
+    const section = document.getElementById("letters-universe");
+
+    section.style.display = "block";
+
+    section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+/* QUESTIONS */
 
 const universeQuestions = [
     {
         title: "🌸 What should I call you?",
         type: "text",
-        placeholder: "Write your answer here..."
+        placeholder: "Your name or nickname..."
     },
     {
-        title: "💜 Which BTS member is your favorite?",
+        title: "💜 Who is your favourite BTS member?",
         type: "select",
-        options: [
-            "RM",
-            "Jin",
-            "SUGA",
-            "j-hope",
-            "Jimin",
-            "V",
-            "Jungkook",
-            "All seven 💜"
-        ]
+        options: ["RM", "Jin", "SUGA", "j-hope", "Jimin", "V", "Jungkook", "All of BTS"]
     },
     {
-        title: "🎵 What's your favorite BTS song?",
+        title: "🎵 What is your favourite BTS song?",
         type: "text",
-        placeholder: "Tell me your favorite song..."
+        placeholder: "Write a song name..."
     },
     {
-        title: "✨ What's a memory that makes you smile?",
+        title: "🌷 What is a happy memory you love?",
         type: "textarea",
-        placeholder: "Share a happy memory..."
+        placeholder: "Share a memory if you feel comfortable..."
     },
     {
-        title: "🌌 If you could visit any anime world, which would you choose?",
+        title: "🌌 Which anime world would you visit?",
         type: "text",
-        placeholder: "Name your favorite anime world..."
+        placeholder: "Your favourite anime world..."
     },
     {
-        title: "💌 Is there anything you'd like to share?",
+        title: "💌 Is there anything else you'd like to share?",
         type: "textarea",
-        placeholder: "Write anything you'd like..."
+        placeholder: "Write a little letter to the universe..."
     }
 ];
 
@@ -1323,50 +718,45 @@ function renderUniverseQuestion() {
     document.getElementById("question-title").textContent =
         question.title;
 
-    const answerArea = document.getElementById("question-answer");
+    const answerContainer = document.getElementById("question-answer");
+    answerContainer.innerHTML = "";
 
-    answerArea.innerHTML = "";
-
-    let field;
+    let input;
 
     if (question.type === "select") {
-        field = document.createElement("select");
+        input = document.createElement("select");
 
         const placeholderOption = document.createElement("option");
         placeholderOption.value = "";
-        placeholderOption.textContent = "Choose your favorite...";
-        field.appendChild(placeholderOption);
+        placeholderOption.textContent = "Choose your favourite...";
+        input.appendChild(placeholderOption);
 
         question.options.forEach(function (optionText) {
             const option = document.createElement("option");
             option.value = optionText;
             option.textContent = optionText;
-            field.appendChild(option);
+            input.appendChild(option);
         });
-
     } else if (question.type === "textarea") {
-        field = document.createElement("textarea");
-        field.placeholder = question.placeholder;
-        field.maxLength = 2000;
-
+        input = document.createElement("textarea");
+        input.placeholder = question.placeholder;
+        input.maxLength = 1000;
     } else {
-        field = document.createElement("input");
-        field.type = "text";
-        field.placeholder = question.placeholder;
-        field.maxLength = 200;
+        input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = question.placeholder;
+        input.maxLength = 200;
     }
 
-    field.id = "answer-input";
-    field.value = universeAnswers[universeCurrentQuestion] || "";
+    input.id = "answer-input";
+    input.value = universeAnswers[universeCurrentQuestion] || "";
 
-    answerArea.appendChild(field);
+    answerContainer.appendChild(input);
 
     document.getElementById("back-button").disabled =
         universeCurrentQuestion === 0;
 
-    const nextButton = document.getElementById("next-button");
-
-    nextButton.textContent =
+    document.getElementById("next-button").textContent =
         universeCurrentQuestion === universeQuestions.length - 1
             ? "Finish 💜"
             : "Next ✨";
@@ -1374,69 +764,41 @@ function renderUniverseQuestion() {
     document.getElementById("form-message").textContent = "";
 }
 
-function nextQuestion() {
-    const field = document.getElementById("answer-input");
+function storeCurrentAnswer() {
+    const input = document.getElementById("answer-input");
 
-    universeAnswers[universeCurrentQuestion] = field.value.trim();
+    universeAnswers[universeCurrentQuestion] = input.value.trim();
+}
+
+function nextQuestion() {
+    storeCurrentAnswer();
+
+    if (!universeAnswers[universeCurrentQuestion]) {
+        document.getElementById("form-message").textContent =
+            "Please answer this question before continuing. 💜";
+        return;
+    }
 
     if (universeCurrentQuestion < universeQuestions.length - 1) {
         universeCurrentQuestion++;
         renderUniverseQuestion();
     } else {
-        showUniverseAnswers();
+        submitUniverseAnswers();
     }
 }
 
 function previousQuestion() {
+    storeCurrentAnswer();
+
     if (universeCurrentQuestion > 0) {
-        const field = document.getElementById("answer-input");
-
-        universeAnswers[universeCurrentQuestion] = field.value.trim();
-
         universeCurrentQuestion--;
         renderUniverseQuestion();
     }
 }
 
-function showUniverseReview() {
-    const answerArea = document.getElementById("question-answer");
+/* SAVE ANSWERS */
 
-    answerArea.innerHTML = "";
-
-    const review = document.createElement("p");
-    review.textContent =
-        "You've reached the end! Your answers are ready for review. 💜";
-
-    answerArea.appendChild(review);
-
-    document.getElementById("question-title").textContent =
-        "🌙 Your Letters to the Universe";
-
-    document.getElementById("question-number").textContent = "6";
-
-    document.getElementById("back-button").disabled = false;
-
-    const nextButton = document.getElementById("next-button");
-
-    nextButton.textContent = "Review Last Answer";
-
-    nextButton.onclick = function () {
-        nextButton.onclick = null;
-        universeCurrentQuestion = universeQuestions.length - 1;
-        renderUniverseQuestion();
-    };
-
-    document.getElementById("form-message").textContent =
-        "Your answers have not been submitted or saved yet.";
-}
-
-// Start the question system after the page loads.
-renderUniverseQuestion(); 
 async function submitUniverseAnswers() {
-    const field = document.getElementById("answer-input");
-
-    universeAnswers[universeCurrentQuestion] = field.value.trim();
-
     const answers = universeQuestions.map(function (_, index) {
         return universeAnswers[index] || "";
     });
@@ -1445,78 +807,861 @@ async function submitUniverseAnswers() {
     const button = document.getElementById("next-button");
 
     button.disabled = true;
+    document.getElementById("back-button").disabled = true;
+
     message.textContent = "Saving your letters... 💜";
 
     try {
         if (typeof window.saveUniverseAnswers !== "function") {
-            throw new Error("Firebase is not connected.");
-        }
+            throw new Error("Fir<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Her Little Universe 💜</title>
 
-        await window.saveUniverseAnswers(answers);
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        message.textContent =
-            "Your letters have been saved successfully! 🌙💜";
+html {
+    scroll-behavior: smooth;
+}
 
-        document.getElementById("question-title").textContent =
-            "Thank you for sharing your universe! ✨";
+body {
+    margin: 0;
+    color: #f7edff;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #10051f, #281044, #10051f);
+    overflow-x: hidden;
+}
 
-        document.getElementById("question-answer").innerHTML = "";
+button, input, select, textarea {
+    font: inherit;
+}
 
-        button.textContent = "Completed 💜";
-    } catch (error) {
-        console.error("Submission failed:", error);
+button {
+    cursor: pointer;
+}
 
-        message.textContent =
-            "Unable to save your answers. Please check your connection and try again.";
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#d7aaff 1px, transparent 1px);
+    background-size: 70px 70px, 110px 110px;
+    background-position: 0 0, 35px 45px;
+    opacity: 0.35;
+}
 
-        button.disabled = false;
+section {
+    padding: 45px 16px;
+    text-align: center;
+}
+
+.card {
+    width: min(100%, 650px);
+    margin: auto;
+    padding: 28px 20px;
+    border: 1px solid rgba(226, 184, 255, 0.35);
+    border-radius: 24px;
+    background: rgba(46, 20, 73, 0.8);
+    box-shadow: 0 0 25px rgba(178, 100, 255, 0.15);
+}
+
+h1, h2 {
+    color: #efcaff;
+}
+
+p {
+    line-height: 1.8;
+}
+
+.primary-button {
+    border: 0;
+    border-radius: 28px;
+    padding: 13px 23px;
+    color: white;
+    background: linear-gradient(135deg, #7928ca, #d946ef);
+    box-shadow: 0 0 18px rgba(194, 120, 255, 0.3);
+}
+
+/* OPENING SCREEN */
+
+#opening-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opening-heart {
+    font-size: 85px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+/* MAIN WEBSITE */
+
+#main-content {
+    display: none;
+}
+
+.hero {
+    padding-top: 70px;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 7vw, 48px);
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.member-card {
+    padding: 18px 10px;
+    border-radius: 18px;
+    border: 1px solid rgba(220, 180, 255, 0.25);
+    background: rgba(105, 50, 145, 0.2);
+}
+
+.member-card .emoji {
+    font-size: 35px;
+}
+
+.secret-word {
+    margin-top: 15px;
+}
+
+.secret-word input {
+    width: min(100%, 260px);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #c99aff;
+}
+
+/* PROPOSAL */
+
+.proposal-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+#yes-button, #no-button {
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+}
+
+#yes-button {
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    color: white;
+}
+
+#no-button {
+    background: #eee4f5;
+    color: #51276e;
+}
+
+#proposal-response {
+    color: #f0caff;
+    min-height: 35px;
+}
+
+/* SECRET DOOR */
+
+#secret-door {
+    padding-top: 30px;
+}
+
+.secret-icon {
+    font-size: 55px;
+}
+
+.secret-door-card button {
+    margin-top: 12px;
+}
+
+/* LETTERS TO THE UNIVERSE */
+
+#letters-universe {
+    display: none;
+    scroll-margin-top: 20px;
+}
+
+.letters-card {
+    width: min(100%, 600px);
+    margin: auto;
+    padding: 25px 18px;
+    border-radius: 24px;
+    border: 1px solid rgba(200, 150, 255, 0.5);
+    background: rgba(45, 20, 75, 0.9);
+    box-shadow: 0 0 25px rgba(180, 100, 255, 0.3);
+}
+
+.letters-icon {
+    font-size: 45px;
+}
+
+.question-progress {
+    color: #d8b5ff;
+    margin: 22px 0;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+#question-answer input,
+#question-answer select,
+#question-answer textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #b987ec;
+    border-radius: 12px;
+    color: #fff;
+    background: #291342;
+}
+
+#question-answer select option {
+    color: white;
+    background: #291342;
+}
+
+#question-answer textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.question-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.question-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: 0;
+    border-radius: 20px;
+}
+
+#back-button {
+    color: white;
+    background: #573576;
+}
+
+#next-button {
+    color: white;
+    background: linear-gradient(135deg, #7928ca, #d946ef);
+}
+
+.question-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.letters-note {
+    font-size: 12px;
+    color: #d6c3e8;
+}
+
+#form-message {
+    margin-top: 18px;
+    color: #f0caff;
+}
+
+/* POPUP */
+
+#universe-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(9, 2, 20, 0.85);
+}
+
+.popup-card {
+    width: min(100%, 420px);
+    padding: 30px 22px;
+    border-radius: 25px;
+    text-align: center;
+    background: linear-gradient(145deg, #351052, #160725);
+    border: 1px solid #d5a2ff;
+    box-shadow: 0 0 35px rgba(188, 100, 255, 0.4);
+}
+
+.popup-icon {
+    font-size: 55px;
+}
+
+footer {
+    padding: 30px 15px;
+    text-align: center;
+    color: #cbb5e4;
+    font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
-        } 
-</script>
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- OPENING SCREEN -->
+<section id="opening-screen">
+    <div class="card">
+        <div class="opening-heart">💜</div>
+        <h1>Her Little Universe</h1>
+        <p>A tiny galaxy made of dreams, stars and special memories. 🌙</p>
+        <button class="primary-button" onclick="enterUniverse()">
+            Enter My Universe ✨
+        </button>
+    </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
+
+    <section class="hero">
+        <div class="card">
+            <h1>Welcome to Your Little Universe 🌌</h1>
+            <p>
+                Somewhere among billions of stars, there are little
+                moments that make life beautiful. This space celebrates
+                those moments. 💜
+            </p>
+        </div>
+    </section>
+
+    <!-- BTS-INSPIRED SECTION -->
+    <section id="bts-section">
+        <div class="card">
+            <h2>A Little BTS Corner 🎤💜</h2>
+            <p>
+                Music can turn ordinary moments into unforgettable
+                memories. Here is a little space for your favourite
+                music and artists.
+            </p>
+
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="emoji">🐨</div>
+                    <h3>RM</h3>
+                    <p>Thoughtful words</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐹</div>
+                    <h3>Jin</h3>
+                    <p>Bright moments</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐱</div>
+                    <h3>SUGA</h3>
+                    <p>Music and dreams</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐿️</div>
+                    <h3>j-hope</h3>
+                    <p>Positive energy</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐥</div>
+                    <h3>Jimin</h3>
+                    <p>Gentle moments</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐻</div>
+                    <h3>V</h3>
+                    <p>Art and imagination</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="emoji">🐰</div>
+                    <h3>Jungkook</h3>
+                    <p>Endless creativity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECRET WORD -->
+    <section id="secret-word-section">
+        <div class="card">
+            <h2>A Tiny Secret 🔐</h2>
+            <p>Somewhere in this universe is a little secret word.</p>
+
+            <div class="secret-word">
+                <input id="secret-word-input"
+                    type="password"
+                    placeholder="Enter the secret word"
+                    maxlength="50">
+
+                <button class="primary-button"
+                    onclick="checkSecretWord()">
+                    Unlock 💜
+                </button>
+            </div>
+
+            <p id="secret-word-message"></p>
+        </div>
+    </section>
+
+    <!-- PROPOSAL -->
+    <section id="proposal-section">
+        <div class="card">
+            <div class="proposal-heart" style="font-size:50px">💜🌌</div>
+            <h2>One Question from My Heart...</h2>
+
+            <p id="proposal-message">
+                In this endless universe, meeting you feels like
+                finding my favourite star. ✨
+                <br><br>
+                Would you give this little love story a chance?
+            </p>
+
+            <div class="proposal-buttons">
+                <button id="yes-button" onclick="acceptProposal()">
+                    Yes 💜
+                </button>
+
+                <button id="no-button" onclick="handleNoClick()">
+                    No 💔
+                </button>
+            </div>
+
+            <p id="proposal-response" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <!-- SECRET DOOR -->
+    <section id="secret-door">
+        <div class="card secret-door-card">
+            <div class="secret-icon">🚪✨</div>
+            <h2>A Secret Universe 💜</h2>
+            <p>
+                Some messages are written among the stars.
+                There is a little space waiting for your thoughts. 🌙
+            </p>
+
+            <button class="primary-button"
+                onclick="openSecretUniverse()">
+                Open the Secret Door 🌙
+            </button>
+        </div>
+    </section>
+
+    <!-- LETTERS TO THE UNIVERSE -->
+    <section id="letters-universe">
+        <div class="letters-card">
+            <div class="letters-icon">🌙✨</div>
+            <h2>Letters to the Universe 💜</h2>
+
+            <p class="letters-description">
+                Every star holds a little secret.
+                Here is a little space just for you. 🌌
+            </p>
+
+            <div class="question-progress">
+                QUESTION <span id="question-number">1</span> OF 6
+            </div>
+
+            <div id="question-card">
+                <h3 id="question-title">🌸 What should I call you?</h3>
+                <div id="question-answer"></div>
+            </div>
+
+            <div class="question-buttons">
+                <button type="button" id="back-button"
+                    onclick="previousQuestion()" disabled>
+                    ← Back
+                </button>
+
+                <button type="button" id="next-button"
+                    onclick="nextQuestion()">
+                    Next ✨
+                </button>
+            </div>
+
+            <p class="letters-note">
+                💜 Please share only what you feel comfortable sharing.
+            </p>
+
+            <div id="form-message" aria-live="polite"></div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Made with 💜 and a little stardust.
+</footer>
+
+<!-- SUCCESS POPUP -->
+<div id="universe-popup" role="dialog"
+    aria-modal="true" aria-labelledby="popup-title">
+
+    <div class="popup-card">
+        <div class="popup-icon">🌙✨</div>
+
+        <h2 id="popup-title">A Message to the Universe</h2>
+
+        <p>
+            Your little universe has been heard. 💜
+            <br><br>
+            Thank you for sharing your thoughts among the stars.
+            May your dreams always shine brightly! 🌌
+        </p>
+
+        <button class="primary-button" onclick="closeUniversePopup()">
+            Close ✨
+        </button>
+    </div>
+</div>
+
+<!-- FIREBASE CONNECTION -->
 <script type="module">
 import { initializeApp } from
-  "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-// Replace these placeholders with your actual Firebase web configuration.
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+/*
+  Replace these placeholder values with the Firebase Web App
+  configuration from Firebase Console → Project settings → Your apps.
+*/
 const firebaseConfig = {
-  apiKey: "AIzaSyCpznrHaQwZ_ySoCgliW9hyCRpyycLEIEM",
-  authDomain: "herlittleuniverse-1ec64.firebaseapp.com",
-  projectId: "herlittleuniverse-1ec64",
-  storageBucket: "herlittleuniverse-1ec64.firebasestorage.app",
-  messagingSenderId: "590235753933",
-  appId: "1:590235753933:web:7d869824b3ba38bee57884",
-  measurementId: "G-V8HLTQTVJN"
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "herlittleuniverse-1ec64",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 window.saveUniverseAnswers = async function (answers) {
-  const answerData = {};
-
-  for (let i = 1; i <= 6; i++) {
-    const value = answers[i - 1];
-
-    if (typeof value !== "string") {
-      throw new Error("Please check all six answers.");
+    if (!Array.isArray(answers) || answers.length !== 6) {
+        throw new Error("Please complete all six questions.");
     }
 
-    answerData["q" + i] = value;
-  }
+    const answerData = {};
 
-  await addDoc(collection(db, "submissions"), {
-    answers: answerData,
-    createdAt: serverTimestamp()
-  });
+    for (let i = 0; i < 6; i++) {
+        if (typeof answers[i] !== "string") {
+            throw new Error("Please check your answers.");
+        }
+
+        answerData["q" + (i + 1)] = answers[i].slice(0, 1000);
+    }
+
+    await addDoc(collection(db, "submissions"), {
+        answers: answerData,
+        createdAt: serverTimestamp()
+    });
 };
+</script>
+
+<!-- WEBSITE INTERACTIONS -->
+<script>
+function enterUniverse() {
+    document.getElementById("opening-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* SECRET WORD */
+
+function checkSecretWord() {
+    const input = document.getElementById("secret-word-input");
+    const message = document.getElementById("secret-word-message");
+
+    if (input.value.trim().toLowerCase() === "purple") {
+        message.textContent = "You found the secret! 💜✨";
+    } else {
+        message.textContent = "Not quite! Keep looking among the stars. 🌌";
+    }
+}
+
+/* PROPOSAL */
+
+let noClickCount = 0;
+let yesButtonScale = 1;
+
+function handleNoClick() {
+    noClickCount++;
+
+    const yesButton = document.getElementById("yes-button");
+    const message = document.getElementById("proposal-message");
+    const response = document.getElementById("proposal-response");
+
+    if (noClickCount <= 3) {
+        yesButtonScale += 0.25;
+        yesButton.style.transform = `scale(${yesButtonScale})`;
+
+        const messages = [
+            "That's okay. Every heart deserves time. 💜",
+            "No worries. Your feelings matter. 🌷",
+            "I'll respect your answer, whatever it is. 🌙"
+        ];
+
+        response.textContent = messages[noClickCount - 1];
+    } else {
+        message.innerHTML =
+            "Sometimes, the most beautiful stories begin " +
+            "with a simple conversation. ✨<br><br>" +
+            "There is no pressure to say yes. " +
+            "Your honest answer means more than anything. 💜";
+
+        response.textContent =
+            "You can choose Yes or No. Both answers will be respected.";
+    }
+}
+
+function acceptProposal() {
+    const message = document.getElementById("proposal-message");
+    const response = document.getElementById("proposal-response");
+
+    message.innerHTML =
+        "🌌💜 A beautiful new chapter begins... 💜🌌";
+
+    response.innerHTML =
+        "Thank you for giving this story a chance. ✨<br><br>" +
+        "May our days be filled with laughter, kindness, trust, " +
+        "and unforgettable memories. 🌸";
+
+    document.getElementById("yes-button").disabled = true;
+    document.getElementById("no-button").disabled = true;
+}
+
+/* SECRET DOOR */
+
+function openSecretUniverse() {
+    const section = document.getElementById("letters-universe");
+
+    section.style.display = "block";
+
+    section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+/* QUESTIONS */
+
+const universeQuestions = [
+    {
+        title: "🌸 What should I call you?",
+        type: "text",
+        placeholder: "Your name or nickname..."
+    },
+    {
+        title: "💜 Who is your favourite BTS member?",
+        type: "select",
+        options: ["RM", "Jin", "SUGA", "j-hope", "Jimin", "V", "Jungkook", "All of BTS"]
+    },
+    {
+        title: "🎵 What is your favourite BTS song?",
+        type: "text",
+        placeholder: "Write a song name..."
+    },
+    {
+        title: "🌷 What is a happy memory you love?",
+        type: "textarea",
+        placeholder: "Share a memory if you feel comfortable..."
+    },
+    {
+        title: "🌌 Which anime world would you visit?",
+        type: "text",
+        placeholder: "Your favourite anime world..."
+    },
+    {
+        title: "💌 Is there anything else you'd like to share?",
+        type: "textarea",
+        placeholder: "Write a little letter to the universe..."
+    }
+];
+
+let universeCurrentQuestion = 0;
+const universeAnswers = {};
+
+function renderUniverseQuestion() {
+    const question = universeQuestions[universeCurrentQuestion];
+
+    document.getElementById("question-number").textContent =
+        universeCurrentQuestion + 1;
+
+    document.getElementById("question-title").textContent =
+        question.title;
+
+    const answerContainer = document.getElementById("question-answer");
+    answerContainer.innerHTML = "";
+
+    let input;
+
+    if (question.type === "select") {
+        input = document.createElement("select");
+
+        const placeholderOption = document.createElement("option");
+        placeholderOption.value = "";
+        placeholderOption.textContent = "Choose your favourite...";
+        input.appendChild(placeholderOption);
+
+        question.options.forEach(function (optionText) {
+            const option = document.createElement("option");
+            option.value = optionText;
+            option.textContent = optionText;
+            input.appendChild(option);
+        });
+    } else if (question.type === "textarea") {
+        input = document.createElement("textarea");
+        input.placeholder = question.placeholder;
+        input.maxLength = 1000;
+    } else {
+        input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = question.placeholder;
+        input.maxLength = 200;
+    }
+
+    input.id = "answer-input";
+    input.value = universeAnswers[universeCurrentQuestion] || "";
+
+    answerContainer.appendChild(input);
+
+    document.getElementById("back-button").disabled =
+        universeCurrentQuestion === 0;
+
+    document.getElementById("next-button").textContent =
+        universeCurrentQuestion === universeQuestions.length - 1
+            ? "Finish 💜"
+            : "Next ✨";
+
+    document.getElementById("form-message").textContent = "";
+}
+
+function storeCurrentAnswer() {
+    const input = document.getElementById("answer-input");
+
+    universeAnswers[universeCurrentQuestion] = input.value.trim();
+}
+
+function nextQuestion() {
+    storeCurrentAnswer();
+
+    if (!universeAnswers[universeCurrentQuestion]) {
+        document.getElementById("form-message").textContent =
+            "Please answer this question before continuing. 💜";
+        return;
+    }
+
+    if (universeCurrentQuestion < universeQuestions.length - 1) {
+        universeCurrentQuestion++;
+        renderUniverseQuestion();
+    } else {
+        submitUniverseAnswers();
+    }
+}
+
+function previousQuestion() {
+    storeCurrentAnswer();
+
+    if (universeCurrentQuestion > 0) {
+        universeCurrentQuestion--;
+        renderUniverseQuestion();
+    }
+}
+<script>
+    // Your existing JavaScript code stays here:
+    // enterUniverse()
+    // checkSecretWord()
+    // handleNoClick()
+    // acceptProposal()
+    // openSecretUniverse()
+    // renderUniverseQuestion()
+    // nextQuestion()
+    // previousQuestion()
+
+    // ADD submitUniverseAnswers() HERE
+    async function submitUniverseAnswers() {
+        const answers = universeQuestions.map(function (_, index) {
+            return universeAnswers[index] || "";
+        });
+
+        const message = document.getElementById("form-message");
+        const button = document.getElementById("next-button");
+        const backButton = document.getElementById("back-button");
+
+        button.disabled = true;
+        backButton.disabled = true;
+        message.textContent = "Saving your letters... 💜";
+
+        try {
+            if (typeof window.saveUniverseAnswers !== "function") {
+                throw new Error("Firebase is not connected.");
+            }
+
+            await window.saveUniverseAnswers(answers);
+
+            message.textContent =
+                "Your letters have been saved successfully! 🌙💜";
+
+            document.getElementById("question-card").style.display = "none";
+            document.querySelector(".question-buttons").style.display = "none";
+            document.getElementById("universe-popup").style.display = "flex";
+
+        } catch (error) {
+            console.error("Error saving answers:", error);
+
+            message.textContent =
+                "Unable to save your answers. Please try again. 💜";
+
+            button.disabled = false;
+            backButton.disabled = universeCurrentQuestion === 0;
+        }
+    }
+
+    renderUniverseQuestion();
+
 </script>
 </body>
 </html>
