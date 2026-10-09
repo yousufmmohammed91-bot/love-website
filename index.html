@@ -10,586 +10,269 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     margin: 0;
-    color: #f7edff;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #10051f, #281044, #10051f);
-    overflow-x: hidden;
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg, #10051f, #321052, #160526);
 }
 
-button, input, select, textarea {
+button, input, textarea, select {
     font: inherit;
 }
 
 button {
+    border: none;
+    border-radius: 25px;
+    padding: 13px 22px;
+    margin: 8px;
     cursor: pointer;
+    background: #d7a5ff;
+    color: #210936;
+    font-weight: bold;
 }
 
-.stars {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background-image:
-        radial-gradient(white 1px, transparent 1px),
-        radial-gradient(#d7aaff 1px, transparent 1px);
-    background-size: 70px 70px, 110px 110px;
-    background-position: 0 0, 35px 45px;
-    opacity: 0.35;
+button:hover {
+    background: #f0d8ff;
 }
 
 section {
-    padding: 45px 16px;
-    text-align: center;
-}
-
-.card {
-    width: min(100%, 650px);
-    margin: auto;
-    padding: 28px 20px;
-    border: 1px solid rgba(226, 184, 255, 0.35);
-    border-radius: 24px;
-    background: rgba(46, 20, 73, 0.8);
-    box-shadow: 0 0 25px rgba(178, 100, 255, 0.15);
+    padding: 55px 18px;
 }
 
 h1, h2 {
-    color: #efcaff;
+    color: #e5c5ff;
 }
 
-p {
-    line-height: 1.8;
+.card {
+    max-width: 650px;
+    margin: 22px auto;
+    padding: 25px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(220,170,255,0.3);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(185,100,255,0.12);
 }
-
-.primary-button {
-    border: 0;
-    border-radius: 28px;
-    padding: 13px 23px;
-    color: white;
-    background: linear-gradient(135deg, #7928ca, #d946ef);
-    box-shadow: 0 0 18px rgba(194, 120, 255, 0.3);
-}
-
-/* OPENING SCREEN */
 
 #opening-screen {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 25px;
+    background: radial-gradient(circle, #522078, #160526 70%);
 }
 
-.opening-heart {
-    font-size: 85px;
-    animation: heartbeat 1.5s infinite;
+.heart {
+    font-size: 75px;
+    animation: pulse 1.5s infinite;
 }
 
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
+@keyframes pulse {
     50% { transform: scale(1.12); }
 }
 
-/* MAIN WEBSITE */
+input, textarea, select {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin: 12px 0;
+    border: 1px solid #c99be9;
+    border-radius: 12px;
+    background: #241334;
+    color: white;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+}
+
+.member {
+    padding: 18px 8px;
+    background: rgba(199,140,255,0.15);
+    border-radius: 15px;
+}
 
 #main-content {
     display: none;
 }
 
-.hero {
-    padding-top: 70px;
-}
-
-.hero h1 {
-    font-size: clamp(30px, 7vw, 48px);
-}
-
-.member-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 14px;
-    margin-top: 25px;
-}
-
-.member-card {
-    padding: 18px 10px;
-    border-radius: 18px;
-    border: 1px solid rgba(220, 180, 255, 0.25);
-    background: rgba(105, 50, 145, 0.2);
-}
-
-.member-card .emoji {
-    font-size: 35px;
-}
-
-.secret-word {
-    margin-top: 15px;
-}
-
-.secret-word input {
-    width: min(100%, 260px);
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid #c99aff;
-}
-
-/* PROPOSAL */
-
-.proposal-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 25px;
-}
-
-#yes-button, #no-button {
-    padding: 12px 24px;
-    border: 0;
-    border-radius: 25px;
-    transition: transform 0.3s ease;
-}
-
-#yes-button {
-    background: linear-gradient(135deg, #a855f7, #ec4899);
-    color: white;
-}
-
-#no-button {
-    background: #eee4f5;
-    color: #51276e;
-}
-
-#proposal-response {
-    color: #f0caff;
-    min-height: 35px;
-}
-
-/* SECRET DOOR */
-
-#secret-door {
-    padding-top: 30px;
-}
-
-.secret-icon {
-    font-size: 55px;
-}
-
-.secret-door-card button {
-    margin-top: 12px;
-}
-
-/* LETTERS TO THE UNIVERSE */
-
 #letters-universe {
     display: none;
-    scroll-margin-top: 20px;
 }
-
-.letters-card {
-    width: min(100%, 600px);
-    margin: auto;
-    padding: 25px 18px;
-    border-radius: 24px;
-    border: 1px solid rgba(200, 150, 255, 0.5);
-    background: rgba(45, 20, 75, 0.9);
-    box-shadow: 0 0 25px rgba(180, 100, 255, 0.3);
-}
-
-.letters-icon {
-    font-size: 45px;
-}
-
-.question-progress {
-    color: #d8b5ff;
-    margin: 22px 0;
-    font-size: 13px;
-    letter-spacing: 2px;
-}
-
-#question-answer input,
-#question-answer select,
-#question-answer textarea {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #b987ec;
-    border-radius: 12px;
-    color: #fff;
-    background: #291342;
-}
-
-#question-answer select option {
-    color: white;
-    background: #291342;
-}
-
-#question-answer textarea {
-    min-height: 110px;
-    resize: vertical;
-}
-
-.question-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 22px;
-}
-
-.question-buttons button {
-    flex: 1;
-    padding: 12px;
-    border: 0;
-    border-radius: 20px;
-}
-
-#back-button {
-    color: white;
-    background: #573576;
-}
-
-#next-button {
-    color: white;
-    background: linear-gradient(135deg, #7928ca, #d946ef);
-}
-
-.question-buttons button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.letters-note {
-    font-size: 12px;
-    color: #d6c3e8;
-}
-
-#form-message {
-    margin-top: 18px;
-    color: #f0caff;
-}
-
-/* POPUP */
 
 #universe-popup {
+    display: none;
     position: fixed;
     inset: 0;
-    z-index: 1000;
-    display: none;
+    z-index: 10;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: rgba(9, 2, 20, 0.85);
+    background: rgba(0,0,0,0.85);
 }
 
 .popup-card {
-    width: min(100%, 420px);
-    padding: 30px 22px;
-    border-radius: 25px;
-    text-align: center;
-    background: linear-gradient(145deg, #351052, #160725);
-    border: 1px solid #d5a2ff;
-    box-shadow: 0 0 35px rgba(188, 100, 255, 0.4);
+    max-width: 450px;
+    padding: 28px;
+    background: #28123d;
+    border: 1px solid #d7a5ff;
+    border-radius: 20px;
 }
 
-.popup-icon {
-    font-size: 55px;
+#form-message, #secret-word-message, #proposal-response {
+    color: #e5c5ff;
+    overflow-wrap: anywhere;
 }
 
 footer {
-    padding: 30px 15px;
-    text-align: center;
-    color: #cbb5e4;
-    font-size: 13px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-    }
+    padding: 25px;
+    color: #d4b7e9;
 }
 </style>
 </head>
 
 <body>
 
-<div class="stars"></div>
-
 <!-- OPENING SCREEN -->
-<section id="opening-screen">
+<div id="opening-screen">
+    <div class="heart">💜</div>
+    <h1>Her Little Universe</h1>
+    <p>A tiny galaxy filled with beautiful memories ✨</p>
+    <button onclick="enterUniverse()">Enter My Universe 🌌</button>
+</div>
+
+<!-- MAIN WEBSITE -->
+<main id="main-content">
+
+<section>
+    <h1>Welcome to Your Universe 💜</h1>
+    <p>Every star has a story, and every story deserves kindness.</p>
+</section>
+
+<section>
     <div class="card">
-        <div class="opening-heart">💜</div>
-        <h1>Her Little Universe</h1>
-        <p>A tiny galaxy made of dreams, stars and special memories. 🌙</p>
-        <button class="primary-button" onclick="enterUniverse()">
-            Enter My Universe ✨
-        </button>
+        <h2>🌌 A Little Message</h2>
+        <p>
+            In this enormous universe, I hope you always find
+            reasons to smile, dreams to follow, and people who
+            treat you with kindness.
+        </p>
     </div>
 </section>
 
-<!-- MAIN CONTENT -->
-<main id="main-content">
+<!-- BTS SECTION -->
+<section>
+    <h2>💜 BTS Galaxy</h2>
+    <p>Seven stars, one beautiful universe.</p>
 
-    <section class="hero">
-        <div class="card">
-            <h1>Welcome to Your Little Universe 🌌</h1>
-            <p>
-                Somewhere among billions of stars, there are little
-                moments that make life beautiful. This space celebrates
-                those moments. 💜
-            </p>
-        </div>
-    </section>
+    <div class="card member-grid">
+        <div class="member">🐨<br>RM</div>
+        <div class="member">🐹<br>Jin</div>
+        <div class="member">🐱<br>SUGA</div>
+        <div class="member">🐿️<br>j-hope</div>
+        <div class="member">🐥<br>Jimin</div>
+        <div class="member">🐻<br>V</div>
+        <div class="member">🐰<br>Jungkook</div>
+    </div>
+</section>
 
-    <!-- BTS-INSPIRED SECTION -->
-    <section id="bts-section">
-        <div class="card">
-            <h2>A Little BTS Corner 🎤💜</h2>
-            <p>
-                Music can turn ordinary moments into unforgettable
-                memories. Here is a little space for your favourite
-                music and artists.
-            </p>
+<!-- SECRET WORD -->
+<section>
+    <div class="card">
+        <h2>🔐 The Secret Galaxy</h2>
+        <p>Can you discover the secret word?</p>
 
-            <div class="member-grid">
-                <div class="member-card">
-                    <div class="emoji">🐨</div>
-                    <h3>RM</h3>
-                    <p>Thoughtful words</p>
-                </div>
+        <input id="secret-word-input"
+               type="text"
+               placeholder="Enter the secret word">
 
-                <div class="member-card">
-                    <div class="emoji">🐹</div>
-                    <h3>Jin</h3>
-                    <p>Bright moments</p>
-                </div>
+        <button onclick="checkSecretWord()">Unlock ✨</button>
 
-                <div class="member-card">
-                    <div class="emoji">🐱</div>
-                    <h3>SUGA</h3>
-                    <p>Music and dreams</p>
-                </div>
+        <p id="secret-word-message"></p>
+    </div>
+</section>
 
-                <div class="member-card">
-                    <div class="emoji">🐿️</div>
-                    <h3>j-hope</h3>
-                    <p>Positive energy</p>
-                </div>
+<!-- PROPOSAL -->
+<section>
+    <div class="card">
+        <h2>💌 One Little Question</h2>
+        <p id="proposal-message">
+            Would you like to begin a beautiful new chapter
+            filled with friendship, laughter, and memories?
+        </p>
 
-                <div class="member-card">
-                    <div class="emoji">🐥</div>
-                    <h3>Jimin</h3>
-                    <p>Gentle moments</p>
-                </div>
+        <button id="yes-button" onclick="acceptProposal()">Yes 💜</button>
+        <button id="no-button" onclick="declineProposal()">No 🌷</button>
 
-                <div class="member-card">
-                    <div class="emoji">🐻</div>
-                    <h3>V</h3>
-                    <p>Art and imagination</p>
-                </div>
+        <p id="proposal-response"></p>
+    </div>
+</section>
 
-                <div class="member-card">
-                    <div class="emoji">🐰</div>
-                    <h3>Jungkook</h3>
-                    <p>Endless creativity</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- SECRET DOOR -->
+<section>
+    <div class="card">
+        <h2>🚪 The Secret Door</h2>
+        <p>A little corner for your thoughts and dreams.</p>
+        <button onclick="openSecretUniverse()">Open the Secret Door ✨</button>
+    </div>
+</section>
 
-    <!-- SECRET WORD -->
-    <section id="secret-word-section">
-        <div class="card">
-            <h2>A Tiny Secret 🔐</h2>
-            <p>Somewhere in this universe is a little secret word.</p>
+<!-- SIX QUESTIONS -->
+<section id="letters-universe">
+    <div class="card" id="question-card">
+        <h2>💌 Letters to the Universe</h2>
 
-            <div class="secret-word">
-                <input id="secret-word-input"
-                    type="password"
-                    placeholder="Enter the secret word"
-                    maxlength="50">
+        <p id="question-counter"></p>
+        <h3 id="question-title"></h3>
 
-                <button class="primary-button"
-                    onclick="checkSecretWord()">
-                    Unlock 💜
-                </button>
-            </div>
+        <div id="question-input-area"></div>
 
-            <p id="secret-word-message"></p>
-        </div>
-    </section>
+        <p id="form-message"></p>
 
-    <!-- PROPOSAL -->
-    <section id="proposal-section">
-        <div class="card">
-            <div class="proposal-heart" style="font-size:50px">💜🌌</div>
-            <h2>One Question from My Heart...</h2>
+        <button id="back-button" onclick="previousQuestion()">⬅ Back</button>
+        <button id="next-button" onclick="nextQuestion()">Next ➡</button>
+    </div>
 
-            <p id="proposal-message">
-                In this endless universe, meeting you feels like
-                finding my favourite star. ✨
-                <br><br>
-                Would you give this little love story a chance?
-            </p>
-
-            <div class="proposal-buttons">
-                <button id="yes-button" onclick="acceptProposal()">
-                    Yes 💜
-                </button>
-
-                <button id="no-button" onclick="handleNoClick()">
-                    No 💔
-                </button>
-            </div>
-
-            <p id="proposal-response" aria-live="polite"></p>
-        </div>
-    </section>
-
-    <!-- SECRET DOOR -->
-    <section id="secret-door">
-        <div class="card secret-door-card">
-            <div class="secret-icon">🚪✨</div>
-            <h2>A Secret Universe 💜</h2>
-            <p>
-                Some messages are written among the stars.
-                There is a little space waiting for your thoughts. 🌙
-            </p>
-
-            <button class="primary-button"
-                onclick="openSecretUniverse()">
-                Open the Secret Door 🌙
-            </button>
-        </div>
-    </section>
-
-    <!-- LETTERS TO THE UNIVERSE -->
-    <section id="letters-universe">
-        <div class="letters-card">
-            <div class="letters-icon">🌙✨</div>
-            <h2>Letters to the Universe 💜</h2>
-
-            <p class="letters-description">
-                Every star holds a little secret.
-                Here is a little space just for you. 🌌
-            </p>
-
-            <div class="question-progress">
-                QUESTION <span id="question-number">1</span> OF 6
-            </div>
-
-            <div id="question-card">
-                <h3 id="question-title">🌸 What should I call you?</h3>
-                <div id="question-answer"></div>
-            </div>
-
-            <div class="question-buttons">
-                <button type="button" id="back-button"
-                    onclick="previousQuestion()" disabled>
-                    ← Back
-                </button>
-
-                <button type="button" id="next-button"
-                    onclick="nextQuestion()">
-                    Next ✨
-                </button>
-            </div>
-
-            <p class="letters-note">
-                💜 Please share only what you feel comfortable sharing.
-            </p>
-
-            <div id="form-message" aria-live="polite"></div>
-        </div>
-    </section>
-
-</main>
+    <div class="card" id="answers-card" style="display:none;">
+        <h2>🌙 Your Little Letter</h2>
+        <p>Your answers are ready! They are stored in this page only
+           while it remains open. 💜</p>
+        <div id="answers-summary"></div>
+        <button onclick="closeAnswers()">Close</button>
+    </div>
+</section>
 
 <footer>
     Made with 💜 and a little stardust.
 </footer>
 
-<!-- SUCCESS POPUP -->
-<div id="universe-popup" role="dialog"
-    aria-modal="true" aria-labelledby="popup-title">
+</main>
 
+<!-- POPUP -->
+<div id="universe-popup" role="dialog" aria-modal="true">
     <div class="popup-card">
-        <div class="popup-icon">🌙✨</div>
-
-        <h2 id="popup-title">A Message to the Universe</h2>
-
-        <p>
-            Your little universe has been heard. 💜
-            <br><br>
-            Thank you for sharing your thoughts among the stars.
-            May your dreams always shine brightly! 🌌
-        </p>
-
-        <button class="primary-button" onclick="closeUniversePopup()">
-            Close ✨
-        </button>
+        <h2>🌙 Your Universe</h2>
+        <p>Your answers have been collected on this page. 💜</p>
+        <p><strong>Note:</strong> Without a database, answers aren't
+           permanently saved or sent anywhere.</p>
+        <button onclick="closeUniversePopup()">Close ✨</button>
     </div>
 </div>
 
-<!-- FIREBASE CONNECTION -->
-<script type="module">
-import { initializeApp } from
-    "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-
-import {
-    getFirestore,
-    collection,
-    addDoc,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-/*
-  Replace these placeholder values with the Firebase Web App
-  configuration from Firebase Console → Project settings → Your apps.
-*/
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCpznrHaQwZ_ySoCgliW9hyCRpyycLEIEM",
-  authDomain: "herlittleuniverse-1ec64.firebaseapp.com",
-  projectId: "herlittleuniverse-1ec64",
-  storageBucket: "herlittleuniverse-1ec64.firebasestorage.app",
-  messagingSenderId: "590235753933",
-  appId: "1:590235753933:web:7d869824b3ba38bee57884",
-  measurementId: "G-V8HLTQTVJN"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-window.saveUniverseAnswers = async function (answers) {
-    if (!Array.isArray(answers) || answers.length !== 6) {
-        throw new Error("Please complete all six questions.");
-    }
-
-    const answerData = {};
-
-    for (let i = 0; i < 6; i++) {
-        if (typeof answers[i] !== "string") {
-            throw new Error("Please check your answers.");
-        }
-
-        answerData["q" + (i + 1)] = answers[i].slice(0, 1000);
-    }
-
-    await addDoc(collection(db, "submissions"), {
-        answers: answerData,
-        createdAt: serverTimestamp()
-    });
-};
-</script>
-
-<!-- WEBSITE INTERACTIONS -->
 <script>
+"use strict";
+
+/* OPEN THE WEBSITE */
 function enterUniverse() {
     const opening = document.getElementById("opening-screen");
     const main = document.getElementById("main-content");
@@ -598,13 +281,10 @@ function enterUniverse() {
         opening.style.display = "none";
         main.style.display = "block";
         window.scrollTo(0, 0);
-    } else {
-        alert("Opening screen or main content was not found.");
     }
 }
 
 /* SECRET WORD */
-
 function checkSecretWord() {
     const input = document.getElementById("secret-word-input");
     const message = document.getElementById("secret-word-message");
@@ -612,77 +292,33 @@ function checkSecretWord() {
     if (input.value.trim().toLowerCase() === "purple") {
         message.textContent = "You found the secret! 💜✨";
     } else {
-        message.textContent = "Not quite! Keep looking among the stars. 🌌";
+        message.textContent = "Try again among the stars! 🌌";
     }
 }
 
-/* PROPOSAL */
-
-let noClickCount = 0;
-let yesButtonScale = 1;
-
-function handleNoClick() {
-    noClickCount++;
-
-    const yesButton = document.getElementById("yes-button");
-    const message = document.getElementById("proposal-message");
-    const response = document.getElementById("proposal-response");
-
-    if (noClickCount <= 3) {
-        yesButtonScale += 0.25;
-        yesButton.style.transform = `scale(${yesButtonScale})`;
-
-        const messages = [
-            "That's okay. Every heart deserves time. 💜",
-            "No worries. Your feelings matter. 🌷",
-            "I'll respect your answer, whatever it is. 🌙"
-        ];
-
-        response.textContent = messages[noClickCount - 1];
-    } else {
-        message.innerHTML =
-            "Sometimes, the most beautiful stories begin " +
-            "with a simple conversation. ✨<br><br>" +
-            "There is no pressure to say yes. " +
-            "Your honest answer means more than anything. 💜";
-
-        response.textContent =
-            "You can choose Yes or No. Both answers will be respected.";
-    }
-}
-
+/* PROPOSAL BUTTONS */
 function acceptProposal() {
-    const message = document.getElementById("proposal-message");
-    const response = document.getElementById("proposal-response");
+    document.getElementById("proposal-message").textContent =
+        "A new chapter begins! 💜";
 
-    message.innerHTML =
-        "🌌💜 A beautiful new chapter begins... 💜🌌";
-
-    response.innerHTML =
-        "Thank you for giving this story a chance. ✨<br><br>" +
-        "May our days be filled with laughter, kindness, trust, " +
-        "and unforgettable memories. 🌸";
-
-    document.getElementById("yes-button").disabled = true;
-    document.getElementById("no-button").disabled = true;
+    document.getElementById("proposal-response").textContent =
+        "May this story be filled with kindness, trust, and happiness. ✨";
 }
 
-/* SECRET DOOR */
+function declineProposal() {
+    document.getElementById("proposal-response").textContent =
+        "That's okay! Your feelings and choices deserve respect. 🌷";
+}
 
+/* OPEN SECRET DOOR */
 function openSecretUniverse() {
     const section = document.getElementById("letters-universe");
-
     section.style.display = "block";
-
-    section.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+    section.scrollIntoView({ behavior: "smooth" });
 }
 
 /* QUESTIONS */
-
-const universeQuestions = [
+const questions = [
     {
         title: "🌸 What should I call you?",
         type: "text",
@@ -691,7 +327,8 @@ const universeQuestions = [
     {
         title: "💜 Who is your favourite BTS member?",
         type: "select",
-        options: ["RM", "Jin", "SUGA", "j-hope", "Jimin", "V", "Jungkook", "All of BTS"]
+        options: ["RM", "Jin", "SUGA", "j-hope", "Jimin", "V",
+                  "Jungkook", "All of BTS"]
     },
     {
         title: "🎵 What is your favourite BTS song?",
@@ -701,7 +338,7 @@ const universeQuestions = [
     {
         title: "🌷 What is a happy memory you love?",
         type: "textarea",
-        placeholder: "Share a memory if you feel comfortable..."
+        placeholder: "Share a memory..."
     },
     {
         title: "🌌 Which anime world would you visit?",
@@ -711,36 +348,35 @@ const universeQuestions = [
     {
         title: "💌 Is there anything else you'd like to share?",
         type: "textarea",
-        placeholder: "Write a little letter to the universe..."
+        placeholder: "Write a little letter..."
     }
 ];
 
-let universeCurrentQuestion = 0;
-const universeAnswers = {};
+let currentQuestion = 0;
+const answers = Array(questions.length).fill("");
 
-function renderUniverseQuestion() {
-    const question = universeQuestions[universeCurrentQuestion];
+function renderQuestion() {
+    const question = questions[currentQuestion];
 
-    document.getElementById("question-number").textContent =
-        universeCurrentQuestion + 1;
+    document.getElementById("question-counter").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
 
-    document.getElementById("question-title").textContent =
-        question.title;
+    document.getElementById("question-title").textContent = question.title;
 
-    const answerContainer = document.getElementById("question-answer");
-    answerContainer.innerHTML = "";
+    const area = document.getElementById("question-input-area");
+    area.replaceChildren();
 
     let input;
 
     if (question.type === "select") {
         input = document.createElement("select");
 
-        const placeholderOption = document.createElement("option");
-        placeholderOption.value = "";
-        placeholderOption.textContent = "Choose your favourite...";
-        input.appendChild(placeholderOption);
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "Choose your favourite...";
+        input.appendChild(placeholder);
 
-        question.options.forEach(function (optionText) {
+        question.options.forEach(function(optionText) {
             const option = document.createElement("option");
             option.value = optionText;
             option.textContent = optionText;
@@ -749,80 +385,88 @@ function renderUniverseQuestion() {
     } else if (question.type === "textarea") {
         input = document.createElement("textarea");
         input.placeholder = question.placeholder;
-        input.maxLength = 1000;
     } else {
         input = document.createElement("input");
         input.type = "text";
         input.placeholder = question.placeholder;
-        input.maxLength = 200;
     }
 
     input.id = "answer-input";
-    input.value = universeAnswers[universeCurrentQuestion] || "";
-
-    answerContainer.appendChild(input);
-
-    document.getElementById("back-button").disabled =
-        universeCurrentQuestion === 0;
-
-    document.getElementById("next-button").textContent =
-        universeCurrentQuestion === universeQuestions.length - 1
-            ? "Finish 💜"
-            : "Next ✨";
+    input.value = answers[currentQuestion];
+    area.appendChild(input);
 
     document.getElementById("form-message").textContent = "";
-}
+    document.getElementById("back-button").disabled =
+        currentQuestion === 0;
 
-function storeCurrentAnswer() {
-    const input = document.getElementById("answer-input");
-
-    universeAnswers[universeCurrentQuestion] = input.value.trim();
+    document.getElementById("next-button").textContent =
+        currentQuestion === questions.length - 1
+        ? "Finish 💜"
+        : "Next ➡";
 }
 
 function nextQuestion() {
-    storeCurrentAnswer();
+    const input = document.getElementById("answer-input");
+    const value = input.value.trim();
 
-    if (!universeAnswers[universeCurrentQuestion]) {
+    if (!value) {
         document.getElementById("form-message").textContent =
             "Please answer this question before continuing. 💜";
         return;
     }
 
-    if (universeCurrentQuestion < universeQuestions.length - 1) {
-        universeCurrentQuestion++;
-        renderUniverseQuestion();
+    answers[currentQuestion] = value;
+
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
     } else {
-        submitUniverseAnswers();
+        showAnswers();
     }
 }
 
 function previousQuestion() {
-    storeCurrentAnswer();
+    const input = document.getElementById("answer-input");
+    answers[currentQuestion] = input.value.trim();
 
-    if (universeCurrentQuestion > 0) {
-        universeCurrentQuestion--;
-        renderUniverseQuestion();
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
     }
 }
 
-/* SAVE ANSWERS */
+/* FINISH WITHOUT FIREBASE */
+function showAnswers() {
+    document.getElementById("question-card").style.display = "none";
 
-async function submitUniverseAnswers() {
-    const answers = universeQuestions.map(function (_, index) {
-        return universeAnswers[index] || "";
+    const summary = document.getElementById("answers-summary");
+    summary.replaceChildren();
+
+    questions.forEach(function(question, index) {
+        const item = document.createElement("p");
+        item.textContent = question.title + " " + answers[index];
+        summary.appendChild(item);
     });
 
-    const message = document.getElementById("form-message");
-    const button = document.getElementById("next-button");
+    document.getElementById("answers-card").style.display = "block";
+    document.getElementById("universe-popup").style.display = "flex";
+}
 
-    button.disabled = true;
-    document.getElementById("back-button").disabled = true;
+function closeUniversePopup() {
+    document.getElementById("universe-popup").style.display = "none";
+}
 
-    message.textContent = "Saving your letters... 💜";
+function closeAnswers() {
+    document.getElementById("answers-card").style.display = "none";
+    document.getElementById("question-card").style.display = "block";
+}
 
-    try {
-        if (typeof window.saveUniverseAnswers !== "function") {
-            throw new Error("Fir<!DOCTYPE html>
+/* PREPARE FIRST QUESTION */
+renderQuestion();
+</script>
+
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -834,592 +478,281 @@ async function submitUniverseAnswers() {
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     margin: 0;
-    color: #f7edff;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #10051f, #281044, #10051f);
-    overflow-x: hidden;
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg, #10051f, #321052, #160526);
 }
 
-button, input, select, textarea {
+button, input, textarea, select {
     font: inherit;
 }
 
 button {
+    border: none;
+    border-radius: 25px;
+    padding: 13px 22px;
+    margin: 8px;
     cursor: pointer;
+    background: #d7a5ff;
+    color: #210936;
+    font-weight: bold;
 }
 
-.stars {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background-image:
-        radial-gradient(white 1px, transparent 1px),
-        radial-gradient(#d7aaff 1px, transparent 1px);
-    background-size: 70px 70px, 110px 110px;
-    background-position: 0 0, 35px 45px;
-    opacity: 0.35;
+button:hover {
+    background: #f0d8ff;
 }
 
 section {
-    padding: 45px 16px;
-    text-align: center;
-}
-
-.card {
-    width: min(100%, 650px);
-    margin: auto;
-    padding: 28px 20px;
-    border: 1px solid rgba(226, 184, 255, 0.35);
-    border-radius: 24px;
-    background: rgba(46, 20, 73, 0.8);
-    box-shadow: 0 0 25px rgba(178, 100, 255, 0.15);
+    padding: 55px 18px;
 }
 
 h1, h2 {
-    color: #efcaff;
+    color: #e5c5ff;
 }
 
-p {
-    line-height: 1.8;
+.card {
+    max-width: 650px;
+    margin: 22px auto;
+    padding: 25px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(220,170,255,0.3);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(185,100,255,0.12);
 }
-
-.primary-button {
-    border: 0;
-    border-radius: 28px;
-    padding: 13px 23px;
-    color: white;
-    background: linear-gradient(135deg, #7928ca, #d946ef);
-    box-shadow: 0 0 18px rgba(194, 120, 255, 0.3);
-}
-
-/* OPENING SCREEN */
 
 #opening-screen {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 25px;
+    background: radial-gradient(circle, #522078, #160526 70%);
 }
 
-.opening-heart {
-    font-size: 85px;
-    animation: heartbeat 1.5s infinite;
+.heart {
+    font-size: 75px;
+    animation: pulse 1.5s infinite;
 }
 
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
+@keyframes pulse {
     50% { transform: scale(1.12); }
 }
 
-/* MAIN WEBSITE */
+input, textarea, select {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin: 12px 0;
+    border: 1px solid #c99be9;
+    border-radius: 12px;
+    background: #241334;
+    color: white;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+}
+
+.member {
+    padding: 18px 8px;
+    background: rgba(199,140,255,0.15);
+    border-radius: 15px;
+}
 
 #main-content {
     display: none;
 }
 
-.hero {
-    padding-top: 70px;
-}
-
-.hero h1 {
-    font-size: clamp(30px, 7vw, 48px);
-}
-
-.member-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 14px;
-    margin-top: 25px;
-}
-
-.member-card {
-    padding: 18px 10px;
-    border-radius: 18px;
-    border: 1px solid rgba(220, 180, 255, 0.25);
-    background: rgba(105, 50, 145, 0.2);
-}
-
-.member-card .emoji {
-    font-size: 35px;
-}
-
-.secret-word {
-    margin-top: 15px;
-}
-
-.secret-word input {
-    width: min(100%, 260px);
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid #c99aff;
-}
-
-/* PROPOSAL */
-
-.proposal-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 25px;
-}
-
-#yes-button, #no-button {
-    padding: 12px 24px;
-    border: 0;
-    border-radius: 25px;
-    transition: transform 0.3s ease;
-}
-
-#yes-button {
-    background: linear-gradient(135deg, #a855f7, #ec4899);
-    color: white;
-}
-
-#no-button {
-    background: #eee4f5;
-    color: #51276e;
-}
-
-#proposal-response {
-    color: #f0caff;
-    min-height: 35px;
-}
-
-/* SECRET DOOR */
-
-#secret-door {
-    padding-top: 30px;
-}
-
-.secret-icon {
-    font-size: 55px;
-}
-
-.secret-door-card button {
-    margin-top: 12px;
-}
-
-/* LETTERS TO THE UNIVERSE */
-
 #letters-universe {
     display: none;
-    scroll-margin-top: 20px;
 }
-
-.letters-card {
-    width: min(100%, 600px);
-    margin: auto;
-    padding: 25px 18px;
-    border-radius: 24px;
-    border: 1px solid rgba(200, 150, 255, 0.5);
-    background: rgba(45, 20, 75, 0.9);
-    box-shadow: 0 0 25px rgba(180, 100, 255, 0.3);
-}
-
-.letters-icon {
-    font-size: 45px;
-}
-
-.question-progress {
-    color: #d8b5ff;
-    margin: 22px 0;
-    font-size: 13px;
-    letter-spacing: 2px;
-}
-
-#question-answer input,
-#question-answer select,
-#question-answer textarea {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #b987ec;
-    border-radius: 12px;
-    color: #fff;
-    background: #291342;
-}
-
-#question-answer select option {
-    color: white;
-    background: #291342;
-}
-
-#question-answer textarea {
-    min-height: 110px;
-    resize: vertical;
-}
-
-.question-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 22px;
-}
-
-.question-buttons button {
-    flex: 1;
-    padding: 12px;
-    border: 0;
-    border-radius: 20px;
-}
-
-#back-button {
-    color: white;
-    background: #573576;
-}
-
-#next-button {
-    color: white;
-    background: linear-gradient(135deg, #7928ca, #d946ef);
-}
-
-.question-buttons button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.letters-note {
-    font-size: 12px;
-    color: #d6c3e8;
-}
-
-#form-message {
-    margin-top: 18px;
-    color: #f0caff;
-}
-
-/* POPUP */
 
 #universe-popup {
+    display: none;
     position: fixed;
     inset: 0;
-    z-index: 1000;
-    display: none;
+    z-index: 10;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: rgba(9, 2, 20, 0.85);
+    background: rgba(0,0,0,0.85);
 }
 
 .popup-card {
-    width: min(100%, 420px);
-    padding: 30px 22px;
-    border-radius: 25px;
-    text-align: center;
-    background: linear-gradient(145deg, #351052, #160725);
-    border: 1px solid #d5a2ff;
-    box-shadow: 0 0 35px rgba(188, 100, 255, 0.4);
+    max-width: 450px;
+    padding: 28px;
+    background: #28123d;
+    border: 1px solid #d7a5ff;
+    border-radius: 20px;
 }
 
-.popup-icon {
-    font-size: 55px;
+#form-message, #secret-word-message, #proposal-response {
+    color: #e5c5ff;
+    overflow-wrap: anywhere;
 }
 
 footer {
-    padding: 30px 15px;
-    text-align: center;
-    color: #cbb5e4;
-    font-size: 13px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-    }
+    padding: 25px;
+    color: #d4b7e9;
 }
 </style>
 </head>
 
 <body>
 
-<div class="stars"></div>
-
 <!-- OPENING SCREEN -->
-<section id="opening-screen">
+<div id="opening-screen">
+    <div class="heart">💜</div>
+    <h1>Her Little Universe</h1>
+    <p>A tiny galaxy filled with beautiful memories ✨</p>
+    <button onclick="enterUniverse()">Enter My Universe 🌌</button>
+</div>
+
+<!-- MAIN WEBSITE -->
+<main id="main-content">
+
+<section>
+    <h1>Welcome to Your Universe 💜</h1>
+    <p>Every star has a story, and every story deserves kindness.</p>
+</section>
+
+<section>
     <div class="card">
-        <div class="opening-heart">💜</div>
-        <h1>Her Little Universe</h1>
-        <p>A tiny galaxy made of dreams, stars and special memories. 🌙</p>
-        <button class="primary-button" onclick="enterUniverse()">
-            Enter My Universe ✨
-        </button>
+        <h2>🌌 A Little Message</h2>
+        <p>
+            In this enormous universe, I hope you always find
+            reasons to smile, dreams to follow, and people who
+            treat you with kindness.
+        </p>
     </div>
 </section>
 
-<!-- MAIN CONTENT -->
-<main id="main-content">
+<!-- BTS SECTION -->
+<section>
+    <h2>💜 BTS Galaxy</h2>
+    <p>Seven stars, one beautiful universe.</p>
 
-    <section class="hero">
-        <div class="card">
-            <h1>Welcome to Your Little Universe 🌌</h1>
-            <p>
-                Somewhere among billions of stars, there are little
-                moments that make life beautiful. This space celebrates
-                those moments. 💜
-            </p>
-        </div>
-    </section>
+    <div class="card member-grid">
+        <div class="member">🐨<br>RM</div>
+        <div class="member">🐹<br>Jin</div>
+        <div class="member">🐱<br>SUGA</div>
+        <div class="member">🐿️<br>j-hope</div>
+        <div class="member">🐥<br>Jimin</div>
+        <div class="member">🐻<br>V</div>
+        <div class="member">🐰<br>Jungkook</div>
+    </div>
+</section>
 
-    <!-- BTS-INSPIRED SECTION -->
-    <section id="bts-section">
-        <div class="card">
-            <h2>A Little BTS Corner 🎤💜</h2>
-            <p>
-                Music can turn ordinary moments into unforgettable
-                memories. Here is a little space for your favourite
-                music and artists.
-            </p>
+<!-- SECRET WORD -->
+<section>
+    <div class="card">
+        <h2>🔐 The Secret Galaxy</h2>
+        <p>Can you discover the secret word?</p>
 
-            <div class="member-grid">
-                <div class="member-card">
-                    <div class="emoji">🐨</div>
-                    <h3>RM</h3>
-                    <p>Thoughtful words</p>
-                </div>
+        <input id="secret-word-input"
+               type="text"
+               placeholder="Enter the secret word">
 
-                <div class="member-card">
-                    <div class="emoji">🐹</div>
-                    <h3>Jin</h3>
-                    <p>Bright moments</p>
-                </div>
+        <button onclick="checkSecretWord()">Unlock ✨</button>
 
-                <div class="member-card">
-                    <div class="emoji">🐱</div>
-                    <h3>SUGA</h3>
-                    <p>Music and dreams</p>
-                </div>
+        <p id="secret-word-message"></p>
+    </div>
+</section>
 
-                <div class="member-card">
-                    <div class="emoji">🐿️</div>
-                    <h3>j-hope</h3>
-                    <p>Positive energy</p>
-                </div>
+<!-- PROPOSAL -->
+<section>
+    <div class="card">
+        <h2>💌 One Little Question</h2>
+        <p id="proposal-message">
+            Would you like to begin a beautiful new chapter
+            filled with friendship, laughter, and memories?
+        </p>
 
-                <div class="member-card">
-                    <div class="emoji">🐥</div>
-                    <h3>Jimin</h3>
-                    <p>Gentle moments</p>
-                </div>
+        <button id="yes-button" onclick="acceptProposal()">Yes 💜</button>
+        <button id="no-button" onclick="declineProposal()">No 🌷</button>
 
-                <div class="member-card">
-                    <div class="emoji">🐻</div>
-                    <h3>V</h3>
-                    <p>Art and imagination</p>
-                </div>
+        <p id="proposal-response"></p>
+    </div>
+</section>
 
-                <div class="member-card">
-                    <div class="emoji">🐰</div>
-                    <h3>Jungkook</h3>
-                    <p>Endless creativity</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- SECRET DOOR -->
+<section>
+    <div class="card">
+        <h2>🚪 The Secret Door</h2>
+        <p>A little corner for your thoughts and dreams.</p>
+        <button onclick="openSecretUniverse()">Open the Secret Door ✨</button>
+    </div>
+</section>
 
-    <!-- SECRET WORD -->
-    <section id="secret-word-section">
-        <div class="card">
-            <h2>A Tiny Secret 🔐</h2>
-            <p>Somewhere in this universe is a little secret word.</p>
+<!-- SIX QUESTIONS -->
+<section id="letters-universe">
+    <div class="card" id="question-card">
+        <h2>💌 Letters to the Universe</h2>
 
-            <div class="secret-word">
-                <input id="secret-word-input"
-                    type="password"
-                    placeholder="Enter the secret word"
-                    maxlength="50">
+        <p id="question-counter"></p>
+        <h3 id="question-title"></h3>
 
-                <button class="primary-button"
-                    onclick="checkSecretWord()">
-                    Unlock 💜
-                </button>
-            </div>
+        <div id="question-input-area"></div>
 
-            <p id="secret-word-message"></p>
-        </div>
-    </section>
+        <p id="form-message"></p>
 
-    <!-- PROPOSAL -->
-    <section id="proposal-section">
-        <div class="card">
-            <div class="proposal-heart" style="font-size:50px">💜🌌</div>
-            <h2>One Question from My Heart...</h2>
+        <button id="back-button" onclick="previousQuestion()">⬅ Back</button>
+        <button id="next-button" onclick="nextQuestion()">Next ➡</button>
+    </div>
 
-            <p id="proposal-message">
-                In this endless universe, meeting you feels like
-                finding my favourite star. ✨
-                <br><br>
-                Would you give this little love story a chance?
-            </p>
-
-            <div class="proposal-buttons">
-                <button id="yes-button" onclick="acceptProposal()">
-                    Yes 💜
-                </button>
-
-                <button id="no-button" onclick="handleNoClick()">
-                    No 💔
-                </button>
-            </div>
-
-            <p id="proposal-response" aria-live="polite"></p>
-        </div>
-    </section>
-
-    <!-- SECRET DOOR -->
-    <section id="secret-door">
-        <div class="card secret-door-card">
-            <div class="secret-icon">🚪✨</div>
-            <h2>A Secret Universe 💜</h2>
-            <p>
-                Some messages are written among the stars.
-                There is a little space waiting for your thoughts. 🌙
-            </p>
-
-            <button class="primary-button"
-                onclick="openSecretUniverse()">
-                Open the Secret Door 🌙
-            </button>
-        </div>
-    </section>
-
-    <!-- LETTERS TO THE UNIVERSE -->
-    <section id="letters-universe">
-        <div class="letters-card">
-            <div class="letters-icon">🌙✨</div>
-            <h2>Letters to the Universe 💜</h2>
-
-            <p class="letters-description">
-                Every star holds a little secret.
-                Here is a little space just for you. 🌌
-            </p>
-
-            <div class="question-progress">
-                QUESTION <span id="question-number">1</span> OF 6
-            </div>
-
-            <div id="question-card">
-                <h3 id="question-title">🌸 What should I call you?</h3>
-                <div id="question-answer"></div>
-            </div>
-
-            <div class="question-buttons">
-                <button type="button" id="back-button"
-                    onclick="previousQuestion()" disabled>
-                    ← Back
-                </button>
-
-                <button type="button" id="next-button"
-                    onclick="nextQuestion()">
-                    Next ✨
-                </button>
-            </div>
-
-            <p class="letters-note">
-                💜 Please share only what you feel comfortable sharing.
-            </p>
-
-            <div id="form-message" aria-live="polite"></div>
-        </div>
-    </section>
-
-</main>
+    <div class="card" id="answers-card" style="display:none;">
+        <h2>🌙 Your Little Letter</h2>
+        <p>Your answers are ready! They are stored in this page only
+           while it remains open. 💜</p>
+        <div id="answers-summary"></div>
+        <button onclick="closeAnswers()">Close</button>
+    </div>
+</section>
 
 <footer>
     Made with 💜 and a little stardust.
 </footer>
 
-<!-- SUCCESS POPUP -->
-<div id="universe-popup" role="dialog"
-    aria-modal="true" aria-labelledby="popup-title">
+</main>
 
+<!-- POPUP -->
+<div id="universe-popup" role="dialog" aria-modal="true">
     <div class="popup-card">
-        <div class="popup-icon">🌙✨</div>
-
-        <h2 id="popup-title">A Message to the Universe</h2>
-
-        <p>
-            Your little universe has been heard. 💜
-            <br><br>
-            Thank you for sharing your thoughts among the stars.
-            May your dreams always shine brightly! 🌌
-        </p>
-
-        <button class="primary-button" onclick="closeUniversePopup()">
-            Close ✨
-        </button>
+        <h2>🌙 Your Universe</h2>
+        <p>Your answers have been collected on this page. 💜</p>
+        <p><strong>Note:</strong> Without a database, answers aren't
+           permanently saved or sent anywhere.</p>
+        <button onclick="closeUniversePopup()">Close ✨</button>
     </div>
 </div>
 
-<!-- FIREBASE CONNECTION -->
-<script type="module">
-import { initializeApp } from
-    "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-
-import {
-    getFirestore,
-    collection,
-    addDoc,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-/*
-  Replace these placeholder values with the Firebase Web App
-  configuration from Firebase Console → Project settings → Your apps.
-*/
-const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "herlittleuniverse-1ec64",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-window.saveUniverseAnswers = async function (answers) {
-    if (!Array.isArray(answers) || answers.length !== 6) {
-        throw new Error("Please complete all six questions.");
-    }
-
-    const answerData = {};
-
-    for (let i = 0; i < 6; i++) {
-        if (typeof answers[i] !== "string") {
-            throw new Error("Please check your answers.");
-        }
-
-        answerData["q" + (i + 1)] = answers[i].slice(0, 1000);
-    }
-
-    await addDoc(collection(db, "submissions"), {
-        answers: answerData,
-        createdAt: serverTimestamp()
-    });
-};
-</script>
-
-<!-- WEBSITE INTERACTIONS -->
 <script>
+"use strict";
+
+/* OPEN THE WEBSITE */
 function enterUniverse() {
-    document.getElementById("opening-screen").style.display = "none";
-    document.getElementById("main-content").style.display = "block";
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const opening = document.getElementById("opening-screen");
+    const main = document.getElementById("main-content");
+
+    if (opening && main) {
+        opening.style.display = "none";
+        main.style.display = "block";
+        window.scrollTo(0, 0);
+    }
 }
 
 /* SECRET WORD */
-
 function checkSecretWord() {
     const input = document.getElementById("secret-word-input");
     const message = document.getElementById("secret-word-message");
@@ -1427,77 +760,33 @@ function checkSecretWord() {
     if (input.value.trim().toLowerCase() === "purple") {
         message.textContent = "You found the secret! 💜✨";
     } else {
-        message.textContent = "Not quite! Keep looking among the stars. 🌌";
+        message.textContent = "Try again among the stars! 🌌";
     }
 }
 
-/* PROPOSAL */
-
-let noClickCount = 0;
-let yesButtonScale = 1;
-
-function handleNoClick() {
-    noClickCount++;
-
-    const yesButton = document.getElementById("yes-button");
-    const message = document.getElementById("proposal-message");
-    const response = document.getElementById("proposal-response");
-
-    if (noClickCount <= 3) {
-        yesButtonScale += 0.25;
-        yesButton.style.transform = `scale(${yesButtonScale})`;
-
-        const messages = [
-            "That's okay. Every heart deserves time. 💜",
-            "No worries. Your feelings matter. 🌷",
-            "I'll respect your answer, whatever it is. 🌙"
-        ];
-
-        response.textContent = messages[noClickCount - 1];
-    } else {
-        message.innerHTML =
-            "Sometimes, the most beautiful stories begin " +
-            "with a simple conversation. ✨<br><br>" +
-            "There is no pressure to say yes. " +
-            "Your honest answer means more than anything. 💜";
-
-        response.textContent =
-            "You can choose Yes or No. Both answers will be respected.";
-    }
-}
-
+/* PROPOSAL BUTTONS */
 function acceptProposal() {
-    const message = document.getElementById("proposal-message");
-    const response = document.getElementById("proposal-response");
+    document.getElementById("proposal-message").textContent =
+        "A new chapter begins! 💜";
 
-    message.innerHTML =
-        "🌌💜 A beautiful new chapter begins... 💜🌌";
-
-    response.innerHTML =
-        "Thank you for giving this story a chance. ✨<br><br>" +
-        "May our days be filled with laughter, kindness, trust, " +
-        "and unforgettable memories. 🌸";
-
-    document.getElementById("yes-button").disabled = true;
-    document.getElementById("no-button").disabled = true;
+    document.getElementById("proposal-response").textContent =
+        "May this story be filled with kindness, trust, and happiness. ✨";
 }
 
-/* SECRET DOOR */
+function declineProposal() {
+    document.getElementById("proposal-response").textContent =
+        "That's okay! Your feelings and choices deserve respect. 🌷";
+}
 
+/* OPEN SECRET DOOR */
 function openSecretUniverse() {
     const section = document.getElementById("letters-universe");
-
     section.style.display = "block";
-
-    section.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+    section.scrollIntoView({ behavior: "smooth" });
 }
 
 /* QUESTIONS */
-
-const universeQuestions = [
+const questions = [
     {
         title: "🌸 What should I call you?",
         type: "text",
@@ -1506,7 +795,8 @@ const universeQuestions = [
     {
         title: "💜 Who is your favourite BTS member?",
         type: "select",
-        options: ["RM", "Jin", "SUGA", "j-hope", "Jimin", "V", "Jungkook", "All of BTS"]
+        options: ["RM", "Jin", "SUGA", "j-hope", "Jimin", "V",
+                  "Jungkook", "All of BTS"]
     },
     {
         title: "🎵 What is your favourite BTS song?",
@@ -1516,7 +806,7 @@ const universeQuestions = [
     {
         title: "🌷 What is a happy memory you love?",
         type: "textarea",
-        placeholder: "Share a memory if you feel comfortable..."
+        placeholder: "Share a memory..."
     },
     {
         title: "🌌 Which anime world would you visit?",
@@ -1526,36 +816,35 @@ const universeQuestions = [
     {
         title: "💌 Is there anything else you'd like to share?",
         type: "textarea",
-        placeholder: "Write a little letter to the universe..."
+        placeholder: "Write a little letter..."
     }
 ];
 
-let universeCurrentQuestion = 0;
-const universeAnswers = {};
+let currentQuestion = 0;
+const answers = Array(questions.length).fill("");
 
-function renderUniverseQuestion() {
-    const question = universeQuestions[universeCurrentQuestion];
+function renderQuestion() {
+    const question = questions[currentQuestion];
 
-    document.getElementById("question-number").textContent =
-        universeCurrentQuestion + 1;
+    document.getElementById("question-counter").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
 
-    document.getElementById("question-title").textContent =
-        question.title;
+    document.getElementById("question-title").textContent = question.title;
 
-    const answerContainer = document.getElementById("question-answer");
-    answerContainer.innerHTML = "";
+    const area = document.getElementById("question-input-area");
+    area.replaceChildren();
 
     let input;
 
     if (question.type === "select") {
         input = document.createElement("select");
 
-        const placeholderOption = document.createElement("option");
-        placeholderOption.value = "";
-        placeholderOption.textContent = "Choose your favourite...";
-        input.appendChild(placeholderOption);
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "Choose your favourite...";
+        input.appendChild(placeholder);
 
-        question.options.forEach(function (optionText) {
+        question.options.forEach(function(optionText) {
             const option = document.createElement("option");
             option.value = optionText;
             option.textContent = optionText;
@@ -1564,113 +853,85 @@ function renderUniverseQuestion() {
     } else if (question.type === "textarea") {
         input = document.createElement("textarea");
         input.placeholder = question.placeholder;
-        input.maxLength = 1000;
     } else {
         input = document.createElement("input");
         input.type = "text";
         input.placeholder = question.placeholder;
-        input.maxLength = 200;
     }
 
     input.id = "answer-input";
-    input.value = universeAnswers[universeCurrentQuestion] || "";
-
-    answerContainer.appendChild(input);
-
-    document.getElementById("back-button").disabled =
-        universeCurrentQuestion === 0;
-
-    document.getElementById("next-button").textContent =
-        universeCurrentQuestion === universeQuestions.length - 1
-            ? "Finish 💜"
-            : "Next ✨";
+    input.value = answers[currentQuestion];
+    area.appendChild(input);
 
     document.getElementById("form-message").textContent = "";
-}
+    document.getElementById("back-button").disabled =
+        currentQuestion === 0;
 
-function storeCurrentAnswer() {
-    const input = document.getElementById("answer-input");
-
-    universeAnswers[universeCurrentQuestion] = input.value.trim();
+    document.getElementById("next-button").textContent =
+        currentQuestion === questions.length - 1
+        ? "Finish 💜"
+        : "Next ➡";
 }
 
 function nextQuestion() {
-    storeCurrentAnswer();
+    const input = document.getElementById("answer-input");
+    const value = input.value.trim();
 
-    if (!universeAnswers[universeCurrentQuestion]) {
+    if (!value) {
         document.getElementById("form-message").textContent =
             "Please answer this question before continuing. 💜";
         return;
     }
 
-    if (universeCurrentQuestion < universeQuestions.length - 1) {
-        universeCurrentQuestion++;
-        renderUniverseQuestion();
+    answers[currentQuestion] = value;
+
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
     } else {
-        submitUniverseAnswers();
+        showAnswers();
     }
 }
 
 function previousQuestion() {
-    storeCurrentAnswer();
+    const input = document.getElementById("answer-input");
+    answers[currentQuestion] = input.value.trim();
 
-    if (universeCurrentQuestion > 0) {
-        universeCurrentQuestion--;
-        renderUniverseQuestion();
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
     }
 }
-<script>
-    // Your existing JavaScript code stays here:
-    // enterUniverse()
-    // checkSecretWord()
-    // handleNoClick()
-    // acceptProposal()
-    // openSecretUniverse()
-    // renderUniverseQuestion()
-    // nextQuestion()
-    // previousQuestion()
 
-    // ADD submitUniverseAnswers() HERE
-    async function submitUniverseAnswers() {
-        const answers = universeQuestions.map(function (_, index) {
-            return universeAnswers[index] || "";
-        });
+/* FINISH WITHOUT FIREBASE */
+function showAnswers() {
+    document.getElementById("question-card").style.display = "none";
 
-        const message = document.getElementById("form-message");
-        const button = document.getElementById("next-button");
-        const backButton = document.getElementById("back-button");
+    const summary = document.getElementById("answers-summary");
+    summary.replaceChildren();
 
-        button.disabled = true;
-        backButton.disabled = true;
-        message.textContent = "Saving your letters... 💜";
+    questions.forEach(function(question, index) {
+        const item = document.createElement("p");
+        item.textContent = question.title + " " + answers[index];
+        summary.appendChild(item);
+    });
 
-        try {
-            if (typeof window.saveUniverseAnswers !== "function") {
-                throw new Error("Firebase is not connected.");
-            }
+    document.getElementById("answers-card").style.display = "block";
+    document.getElementById("universe-popup").style.display = "flex";
+}
 
-            await window.saveUniverseAnswers(answers);
+function closeUniversePopup() {
+    document.getElementById("universe-popup").style.display = "none";
+}
 
-            message.textContent =
-                "Your letters have been saved successfully! 🌙💜";
+function closeAnswers() {
+    document.getElementById("answers-card").style.display = "none";
+    document.getElementById("question-card").style.display = "block";
+}
 
-            document.getElementById("question-card").style.display = "none";
-            document.querySelector(".question-buttons").style.display = "none";
-            document.getElementById("universe-popup").style.display = "flex";
-
-        } catch (error) {
-            console.error("Error saving answers:", error);
-
-            message.textContent =
-                "Unable to save your answers. Please try again. 💜";
-
-            button.disabled = false;
-            backButton.disabled = universeCurrentQuestion === 0;
-        }
-    }
-
-    renderUniverseQuestion();
-
+/* PREPARE FIRST QUESTION */
+renderQuestion();
 </script>
+
 </body>
 </html>
