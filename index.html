@@ -591,9 +591,16 @@ window.saveUniverseAnswers = async function (answers) {
 <!-- WEBSITE INTERACTIONS -->
 <script>
 function enterUniverse() {
-    document.getElementById("opening-screen").style.display = "none";
-    document.getElementById("main-content").style.display = "block";
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const opening = document.getElementById("opening-screen");
+    const main = document.getElementById("main-content");
+
+    if (opening && main) {
+        opening.style.display = "none";
+        main.style.display = "block";
+        window.scrollTo(0, 0);
+    } else {
+        alert("Opening screen or main content was not found.");
+    }
 }
 
 /* SECRET WORD */
